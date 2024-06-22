@@ -43,7 +43,7 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        //
+        return view('campaign.create');
     }
 
     /**
@@ -65,9 +65,8 @@ class CampaignController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Campaign $campaign)
-    {
-        //
+    public function edit(Campaign $campaign){
+        return view('campaign.edit',compact('campaign'));
     }
 
     /**

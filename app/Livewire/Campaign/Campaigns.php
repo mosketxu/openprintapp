@@ -2,13 +2,44 @@
 
 namespace App\Livewire\Campaign;
 
+use App\Models\Campaign;
+use App\Models\Entidad;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Carbon;
 
 class Campaigns extends Component
 {
+
+    public $search='';
+    public $filtroentidad='';
+    public $filtroestado='';
+
+
     public function render()
     {
-        $campaigns=Campaigns::where('entidad_id',$)
-        return view('livewire.campaign.campaigns');
+        $cliente=Auth::user();
+        $campaigns=Campaign::query()
+            ->with('cliente')
+            ->when(!empty($cliente),function($query) use($cliente){return $query->where('entidad_id','=',$cliente->entidad_id);})
+            ->when($this->search!='',function($query) {return $query->where('name','LIKE','%'.$this->search.'%');})
+            ->when($this->filtroentidad,function($query) {return $query->where('entidad_id','=',$this->filtroentidadad);})
+            ->when($this->filtroestado,function($query) {return $query->where('estado','=',$this->filtroestado);})
+            ->get();
+
+            // $c=$campaigns->first();
+            // dd($c);
+
+
+        $entidades=Entidad::query()
+            ->when(!empty($cliente->entidad_id),function($query) use($cliente){return $query->where('id','=',$cliente->entidad_id);})
+            ->whereIn('entidadtipo_id',['1','3'])
+            ->get();
+
+
+        // session()->flash('flash.banner', 'Yay for free components!');
+        // session()->flash('flash.bannerStyle', 'success');
+
+        return view('livewire.campaign.campaigns',compact(['campaigns','entidades','cliente']));
     }
 }
