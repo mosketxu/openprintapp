@@ -25,45 +25,30 @@
             <div class="">
                 <div class="flex w-full py-2 pl-2 text-sm text-gray-500 bg-blue-100 rounded-t-md">
                     <div class="w-2/12 pl-2 font-light lg:w-4/12" ><x-label>{{ __('Cliente') }}</x-label> </div>
-                    <div class="w-3/12 pl-2 font-light lg:w-4/12" ><x-label>{{ __('Campaña') }}</x-label></div>
+                    <div class="w-4/12 pl-2 font-light lg:w-4/12" ><x-label>{{ __('Campaña') }}</x-label></div>
                     <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('F.Inicio') }}</x-label></div>
                     <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('F.Fin') }}</x-label></div>
                     <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Estado') }}</x-label></div>
                     <div class="hidden pl-2 font-light lg:w-1/12 lg:flex " ><x-label>{{ __('F.Instal.1') }}</x-label></div>
                     <div class="hidden pl-2 font-light lg:w-1/12 lg:flex " ><x-label>{{ __('F.Instal.2') }}</x-label></div>
                     <div class="hidden pl-2 font-light lg:w-1/12 lg:flex " ><x-label>{{ __('F.Instal.3') }}</x-label></div>
-                    <div class="w-1/12 pl-2 " ></div>
                 </div>
                 @forelse ($campaigns as $campaign)
-                <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y" wire:loading.class.delay="opacity-50">
-                    <div class="w-2/12 pr-2 lg:w-4/12 ">
-                        <x-inputblue type="text"  class="border-0" value="{{ $campaign->cliente->entidad }}" readonly/>
-                    </div>
-                    <div class="w-3/12 pr-2 lg:w-4/12 ">
-                        <x-inputblue type="text"  class="border-0" value="{{ $campaign->name }}" readonly/>
-                    </div>
-                    <div class="w-1/12 pr-2 ">
-                        <x-inputblue type="text"  class="border-0" value="{{ $campaign->fini }}"  readonly/>
-                    </div>
-                    <div class="w-1/12 pr-2 ">
-                        <x-inputblue type="text"  class="border-0"  value="{{ $campaign->ffin }}"  readonly/>
-                    </div>
-                    <div class="w-1/12 pr-2 ">
-                        <x-inputblue type="text"  class="border-0 {{$campaign->campestado[0]}}"  value="{{$campaign->campestado[1]}}" readonly/>
-                    </div>
-                    <div class="hidden pr-2 lg:w-1/12 lg:flex ">
-                        <x-inputblue type="text"  class="border-0"  value="{{ $campaign->finst1 }}" readonly/>
-                    </div>
-                    <div class="hidden pr-2 lg:w-1/12 lg:flex ">
-                        <x-inputblue type="text"  class="border-0"  value="{{ $campaign->finst2 }}" readonly/>
-                    </div>
-                    <div class="hidden pr-2 lg:w-1/12 lg:flex ">
-                        <x-inputblue type="text"  class="border-0"  value="{{ $campaign->finst3 }}" readonly/>
-                    </div>
-                    <div class="flex justify-end w-1/12 pr-2 mr-2">
-                        <x-icon.edit-a href="{{ route('campaign.edit',$campaign) }}" class="w-6"  title="Editar"/>
-                        <x-icon.trash-a class="w-5 text-red-500" wire:click.prevent="delete({{ $campaign->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()"/>
-                    </div>
+
+                {{-- <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-gray-100 hover:cursor-pointer" wire:loading.class.delay="opacity-50" >
+                    <div class="flex w-9/12 md:w-10/12" onclick="location.href = '{{ route('cliente.oferta.editar',[$oferta,'i']) }}'"> --}}
+
+                <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-gray-100 hover:cursor-pointer"
+                    onclick="location.href = '{{ route('campaign.edit',$campaign) }}'"
+                    wire:loading.class.delay="opacity-50" >
+                    <div class="w-2/12 pr-2 lg:w-4/12 "><x-inputbluetransparent type="text"  class="" value="{{ $campaign->cliente->entidad }}" readonly/></div>
+                    <div class="w-4/12 pr-2 lg:w-4/12 "><x-inputbluetransparent type="text"  class="" value="{{ $campaign->name }}" readonly/></div>
+                    <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $campaign->fini }}"  readonly/></div>
+                    <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class=""  value="{{ $campaign->ffin }}"  readonly/></div>
+                    <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class=" {{$campaign->campestado[0]}}"  value="{{$campaign->campestado[1]}}" readonly/></div>
+                    <div class="hidden pr-2 lg:w-1/12 lg:flex "><x-inputbluetransparent type="text"  class=""  value="{{ $campaign->finst1 }}" readonly/></div>
+                    <div class="hidden pr-2 lg:w-1/12 lg:flex "><x-inputbluetransparent type="text"  class=""  value="{{ $campaign->finst2 }}" readonly/></div>
+                    <div class="hidden pr-2 lg:w-1/12 lg:flex "><x-inputbluetransparent type="text"  class=""  value="{{ $campaign->finst3 }}" readonly/></div>
                 </div>
                 @empty
                     <div>

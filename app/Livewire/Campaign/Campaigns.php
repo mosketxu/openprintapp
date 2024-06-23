@@ -32,15 +32,4 @@ class Campaigns extends Component
         return view('livewire.campaign.campaigns',compact(['campaigns','entidades','cliente']));
     }
 
-    public function delete($campaign){
-        $camp = Campaign::find($campaign);
-        // $campaignpropia=
-        if(Auth::user()->entidad_id)
-            if($camp->entidad_id!=Auth::user()->entidad_id)
-                $this->dispatch('notifyred', 'No es propietario de esta campaña:');
-        elseif($camp && $this->authorize('campaign.delete',$camp)) {
-                $camp->delete();
-                $this->dispatch('notify', 'La Campaña: '.$camp->name.' ha sido eliminada!');
-        }
-    }
 }

@@ -14,7 +14,7 @@ class Campaign extends Component
 {
 
     public $campaign;
-    public $deshabilitado="";
+    public $deshabilitado="false";
 
     public $name='';
     public $entidad_id;
@@ -61,7 +61,7 @@ class Campaign extends Component
         $this->montaje2=$campaign->montaje2;
         $this->montaje3=$campaign->montaje3;
 
-        // $this->deshabilitado=Auth::user()->hasRole(['Admin','Gestor']) ? '' : 'disabled';
+        $this->deshabilitado=Auth::user()->hasRole(['Cliente','Tienda','Montador']) ? '' : 'true';
     }
 
 
@@ -76,7 +76,10 @@ class Campaign extends Component
         if(!$this->entidad_id)
             $this->entidad_id=$cliente->entidad_id ? $entidades->first()->id : '';
 
-        return view('livewire.campaign.campaign',compact(['cliente','entidades']));
+        if($this->deshabilitado!='true')
+            return view('livewire.campaign.campaign',compact(['cliente','entidades']));
+        else
+            return view('livewire.campaign.campaignshow',compact(['cliente','entidades']));
     }
 
     public function save(){
@@ -109,5 +112,15 @@ class Campaign extends Component
         // return $this->redirect('/');
     }
 
+    public function delete($campaign){
+        $camp = ModelsCampaign::find($campaign);
+        if(Auth::user()->entidad_id)
+            if($camp->entidad_id!=Auth::user()->entidad_id)
+                $this->dispatch('notifyred', 'No es propietario de esta campaña:');
+            elseif($camp && $this->authorize('campaign.delete',$camp)) {
+                $camp->delete();
+                $this->dispatch('notify', 'La Campaña: '.$camp->name.' ha sido eliminada!');
+            }
+    }
 
 }
