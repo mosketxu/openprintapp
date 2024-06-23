@@ -47,6 +47,7 @@
 
                 <div class="">
                     <h1>Bienvenido a Grafitex</h1>
+                    <h2>Utilidades</h2>
                 </div>
 
                 @if (Route::has('login'))

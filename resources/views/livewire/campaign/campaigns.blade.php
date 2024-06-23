@@ -13,11 +13,13 @@
                 <div class="flex w-10/12 space-x-3">
                     @include('campaign.campaignfilters')
                 </div>
+                @can('campaign.create')
                 <div class="flex flex-row-reverse w-2/12">
                     <div class="pt-3">
                         <x-buttonblue  onclick="location.href = '{{ route('campaign.create') }}'" color="blue">{{ __('Nueva') }}</x-buttonblue>
                     </div>
                 </div>
+                @endcan
             </div>
 
             <div class="">

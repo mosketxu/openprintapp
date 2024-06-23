@@ -3,30 +3,34 @@
 use App\Http\Controllers\CampaignController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\RoleController;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
+Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(function () {
     Route::get('/dashboard', function () {
-        if (Auth::user()->hasRole('Admin')) {
-            return view('dashboard');
-            // return redirect()->route('dashboard');
-        } elseif (Auth::user()->hasRole('Gestion')) {
-            dd('analizar');
-            // return redirect()->route('dashboard');
-        } elseif (Auth::user()->hasRole('Comercial')) {
-            // return redirect()->route('dashboard');
-            dd('analizar');
-        } elseif (Auth::user()->hasRole('Cliente')) {
-            dd('analizar');
-        } else {
-            dd('analizar');
-            // return redirect()->route('producto.index');
-        }
-        // return view('dashboard');
+        // dd(Auth::user()->hasRole('Cliente'));
+        // dd(Auth::user()->hasRole('Cliente'));
+        if (Auth::user()->hasRole('Admin')) return view('dashboard');
+        elseif (Auth::user()->hasRole('Gestion'))  dd('analizar');
+        elseif (Auth::user()->hasRole('Cliente'))return redirect()->route('campaign.index');
+        elseif (Auth::user()->hasRole('Comercial')) dd('analizar');
+        elseif (Auth::user()->hasRole('Tienda')) dd('analizar');
+        else dd('analizar');
     })->name('dashboard');
 
-    Route::resource('campaign', CampaignController::class)->names('campaign'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
+    // Campaigns
+    Route::middleware('role_or_permission:campaign.index')->group(function () {
+        Route::get('/campaign', [CampaignController::class, 'index'])->name('campaign.index');
+        Route::get('/campaign/{campaign}/edit', [CampaignController::class, 'edit'])->name('campaign.edit');
+    });
+    Route::middleware('role_or_permission:campaign.create')->group(function () {
+        Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');
+    });
 });

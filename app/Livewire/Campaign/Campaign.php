@@ -4,9 +4,10 @@ namespace App\Livewire\Campaign;
 
 use App\Models\Campaign as ModelsCampaign;
 use App\Models\Entidad;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-// use Livewire\Attributes\Validate;
+use Livewire\Attributes\Validate;
 use Illuminate\Validation\Rule;
 
 class Campaign extends Component
@@ -31,11 +32,11 @@ class Campaign extends Component
 
     protected function rules(){
         return [
-            'name'=>'required|unique:campaigns,name',
+            'name'=>'required',
             'entidad_id'=>'required',
             'fechainicio'=>'required|date',
-            'fechafin'=>'required|date',
-            'estado'=>'required|date',
+            'fechafin'=>'nullable|date',
+            'estado'=>'required',
             'fechainstal1'=>'nullable|date',
             'fechainstal2'=>'nullable|date',
             'fechainstal3'=>'nullable|date',
@@ -49,9 +50,10 @@ class Campaign extends Component
         $this->campaign=$campaign;
         $this->name=$campaign->name;
         $this->entidad_id=$campaign->entidad_id;
-        $this->fechainicio=$campaign->fechainicio;
+        $this->fechainicio= $campaign->fechainicio;
+        if (!$this->fechainicio) $this->fechainicio=Carbon::now()->format('Y-m-d');
         $this->fechafin=$campaign->fechafin;
-        $this->estado=$campaign->estado;
+        $this->estado=$campaign->estado ? $campaign->estado : '0';
         $this->fechainstal1=$campaign->fechainstal1;
         $this->fechainstal2=$campaign->fechainstal2;
         $this->fechainstal3=$campaign->fechainstal3;
@@ -63,10 +65,7 @@ class Campaign extends Component
     }
 
 
-    public function render()
-    {
-
-        // dd($this->campaign);
+    public function render(){
         $cliente=Auth::user();
 
         $entidades=Entidad::query()
@@ -74,34 +73,21 @@ class Campaign extends Component
         ->whereIn('entidadtipo_id',['1','3'])
         ->get();
 
-        $this->entidad_id=$cliente->entidad_id ? $entidades->first()->id : '';
+        if(!$this->entidad_id)
+            $this->entidad_id=$cliente->entidad_id ? $entidades->first()->id : '';
 
         return view('livewire.campaign.campaign',compact(['cliente','entidades']));
     }
 
     public function save(){
-
         $this->validate();
-        if($this->campaign->id){
-            $i=$this->campaign->id;
-            $this->validate([
-                'campaign.name'=>[
-                    'required',
-                    Rule::unique('campaigns','name')->ignore($this->campaign->id)
-                    ],
-                ],
-            );
-            $message=$this->campaign->referencia . " Actualizado satisfactoriamente";
-        }else{
-            // $this->validate(['campaign.name'=>'required|unique:campaigns,name',]);
-            $i=$this->campaign->id;
-            $message=$this->campaign->referencia . " creado satisfactoriamente";
-        }
-        // dd($message);
+        $i = $this->campaign->id ? $this->campaign->id : '';
+        $message=$this->campaign->referencia . "Acción realizada satisfactoriamente";
+
+
         $camp=ModelsCampaign::updateOrCreate([
             'id'=>$i
-        ],
-        [
+        ],[
             'name'=>$this->name,
             'entidad_id'=>$this->entidad_id,
             'fechainicio'=>$this->fechainicio,
@@ -116,19 +102,11 @@ class Campaign extends Component
             ]
         );
 
-        session()->flash('status', 'Post successfully updated.');
-
-        return $this->redirect('/campaigns');
-
-        // sleep(1);
-
-        // $this->showSuccessIndicator = true;
-        // $this->dispatch('banner-message',['style'=>'success','message'=>$message]);
-        // dd($camp);
-        // session()->flash('flash.bannerStyle', 'success');
+        $this->showSuccessIndicator = true;
+        $this->dispatch('banner-message',['style'=>'success','message'=>$message]);
+        $this->dispatch('notify', $message);
 
         // return $this->redirect('/');
-        // $this->dispatchBrowserEvent('notify', $mensaje);
     }
 
 

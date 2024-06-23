@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('entidad_id')->constrained('entidades');
             $table->string('name', 100)->unique('campaigns_name_unique');
             $table->date('fechainicio');
-            $table->date('fechafin');
+            $table->date('fechafin')->nullable();
             $table->integer('estado')->default('0');
             $table->date('fechainstal1')->nullable();
             $table->date('fechainstal2')->nullable();

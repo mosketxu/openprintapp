@@ -18,11 +18,11 @@ class PermissionsTableSeeder extends Seeder
     {
         // \DB::table('permissions')->delete();
 
-        $admin=Role::where('name','admin')->first();
-        $grafitex=Role::where('name','grafitex')->first();
-        $cliente=Role::where('name','cliente')->first();
-        $tienda=Role::where('name','tienda')->first();
-        $montador=Role::where('name','montador')->first();
+        $admin=Role::where('name','Admin')->first();
+        $grafitex=Role::where('name','Grafitex')->first();
+        $cliente=Role::where('name','Cliente')->first();
+        $tienda=Role::where('name','Tienda')->first();
+        $montador=Role::where('name','Montador')->first();
 
         // Users
         // Permission::create(['name'=>'user.index'])->syncRoles($admin, $grafitex);

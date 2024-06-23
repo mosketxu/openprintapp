@@ -26,7 +26,7 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
@@ -41,8 +41,8 @@
                 <div class="p-2">powered by  <a href="mailto:alex.arregui@sumaempresa.com" class="text-blue-800 underline">alex.arregui@sumaempresa.com</a></div>
             </footer>
 
-            {{-- <x-notification />
-            <x-notificationred /> --}}
+            <x-notification />
+            <x-notificationred />
 
         </div>
 
