@@ -46,12 +46,19 @@ class PermissionsTableSeeder extends Seeder
         // Permission::create(['name'=>'permiso.delete'])->syncRoles($admin, $grafitex);
 
 
-        // campaign
-        Permission::create(['name'=>'campaign.index'])->syncRoles($admin, $grafitex);
-        Permission::create(['name'=>'campaign.create'])->syncRoles($admin, $grafitex);
-        Permission::create(['name'=>'campaign.edit'])->syncRoles($admin, $grafitex);
-        Permission::create(['name'=>'campaign.update'])->syncRoles($admin, $grafitex);
-        Permission::create(['name'=>'campaign.delete'])->syncRoles($admin, $grafitex);
+        // // campaign
+        // Permission::create(['name'=>'campaign.index'])->syncRoles($admin, $grafitex);
+        // Permission::create(['name'=>'campaign.create'])->syncRoles($admin, $grafitex);
+        // Permission::create(['name'=>'campaign.edit'])->syncRoles($admin, $grafitex);
+        // Permission::create(['name'=>'campaign.update'])->syncRoles($admin, $grafitex);
+        // Permission::create(['name'=>'campaign.delete'])->syncRoles($admin, $grafitex);
+
+        // import
+        Permission::create(['name'=>'import.index'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'import.create'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'import.edit'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'import.update'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'import.delete'])->syncRoles($admin, $grafitex);
 
         // // campaign store
         // Permission::create(['name'=>'campaignstore.index'])->syncRoles($admin, $grafitex);

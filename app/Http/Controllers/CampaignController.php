@@ -21,7 +21,4 @@ class CampaignController extends Controller
         return view('campaign.edit',compact('campaign'));
     }
 
-    public function import(Campaign $campaign){
-        return view('campaign.import',compact('campaign'));
-    }
 }
