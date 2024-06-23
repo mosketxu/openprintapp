@@ -13,6 +13,7 @@
             <div class="">
                 @can('campaign.create')
                 <x-buttonblue  onclick="location.href = '{{ route('campaign.create') }}'" >{{ __('Nueva') }}</x-buttonblue>
+                <x-buttongreen  onclick="location.href = '{{ route('campaign.import') }}'" >{{ __('Importar Excel') }}</x-buttongreen>
                 @endcan
                 @can('campaign.delete')
                 <x-buttonred  wire:click.prevent="delete({{ $campaign->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()">{{ __('Eliminar') }}</x-buttonred>

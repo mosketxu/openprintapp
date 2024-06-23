@@ -40,9 +40,9 @@ class Campaign extends Component
             'fechainstal1'=>'nullable|date',
             'fechainstal2'=>'nullable|date',
             'fechainstal3'=>'nullable|date',
-            'montaje1'=>'nullable|date',
-            'montaje2'=>'nullable|date',
-            'montaje3'=>'nullable|date'
+            'montaje1'=>'nullable',
+            'montaje2'=>'nullable',
+            'montaje3'=>'nullable'
         ];
     }
 
@@ -61,7 +61,7 @@ class Campaign extends Component
         $this->montaje2=$campaign->montaje2;
         $this->montaje3=$campaign->montaje3;
 
-        $this->deshabilitado=Auth::user()->hasRole(['Cliente','Tienda','Montador']) ? '' : 'true';
+        $this->deshabilitado=Auth::user()->hasRole(['Cliente','Tienda','Montador']) ? 'true' : '';
     }
 
 
@@ -110,6 +110,10 @@ class Campaign extends Component
         $this->dispatch('notify', $message);
 
         // return $this->redirect('/');
+    }
+
+    public function import(){
+        dd('asd');
     }
 
     public function delete($campaign){

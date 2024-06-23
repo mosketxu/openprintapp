@@ -36,5 +36,6 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
     });
     Route::middleware('role_or_permission:campaign.create')->group(function () {
         Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');
+        Route::get('/campaign/import', [CampaignController::class, 'import'])->name('campaign.import');
     });
 });
