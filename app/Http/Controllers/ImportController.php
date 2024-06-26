@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\DynamicImport;
 use App\Models\Campaign;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
@@ -31,9 +32,15 @@ class ImportController extends Controller
             return response()->json(['data'=>'Fichero importado successfully.',201]);
         }catch(\Exception $ex){
             Log::info($ex);
-            return response()->json(['data'=>'Some error has occur.',400]);
+            $notification = array('message' => 'La imagen ha sido borrada.','alert-type' => 'success');
+            // return redirect()->back()->with($message='sdf');
+            return redirect()->back()->with('success', 'Los datos se importaron correctamente.');
+
+            // return response()->json(['data'=>'Some error has occur.',400]);
 
         }
+
+        dd('sdf');
         // $this->dropTemporaryTable($campaign);
     }
 
