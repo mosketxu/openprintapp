@@ -6,4 +6,5 @@ return [
     App\Providers\JetstreamServiceProvider::class,
     Spatie\Permission\PermissionServiceProvider::class,
     Barryvdh\Debugbar\ServiceProvider::class,
+    Maatwebsite\Excel\ExcelServiceProvider::class,
 ];

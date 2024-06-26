@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\DynamicImport;
 use App\Models\Campaign;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
 class ImportController extends Controller
 {
@@ -17,9 +22,19 @@ class ImportController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create(Campaign $campaign, Request $request){
+        $request->validate(['fichero' => 'required|mimes:xls,xlsx',]);
+
+
+        try{
+            Excel::import(new DynamicImport($campaign->id), $request->file('fichero'));
+            return response()->json(['data'=>'Fichero importado successfully.',201]);
+        }catch(\Exception $ex){
+            Log::info($ex);
+            return response()->json(['data'=>'Some error has occur.',400]);
+
+        }
+        // $this->dropTemporaryTable($campaign);
     }
 
     /**
@@ -60,5 +75,13 @@ class ImportController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+
+    public function dropTemporaryTable(Campaign $campaign)
+    {
+        Schema::dropIfExists($campaign->id);
+        return response()->json(['message' => 'Temporary table dropped.']);
     }
 }

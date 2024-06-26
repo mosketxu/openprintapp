@@ -20,6 +20,7 @@
                     </div>
                 </div>
                 @endcan
+
             </div>
 
             <div class="">

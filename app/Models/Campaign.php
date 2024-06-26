@@ -12,9 +12,8 @@ class Campaign extends Model
     protected $fillable=['entidad_id','name','fechainicio','fechafin','estado','fechainstal1','fechainstal2','fechainstal3','montaje1','montaje2','montaje3'];
 
     public function cliente(){return $this->belongsTo(Entidad::class,'entidad_id','id')->withDefault(['entidad'=>'Grafitex']);}
-    // public function stores(){return $this->hasMany(Store::class);}
-    // public function campaignstores(){return $this->hasMany(CampaignStore::class);}
-    // public function campaignelementos(){return $this->hasMany(CampaignElemento::class);}
+    public function campaignstores(){return $this->hasMany(CampaignStore::class);}
+    public function campaignelementos(){return $this->hasMany(CampaignElemento::class);}
 
     public function scopeSearch2($query, $busca){
         return $query->where('name', 'LIKE', "%$busca%")

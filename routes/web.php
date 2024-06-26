@@ -2,14 +2,10 @@
 
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\TempTableController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\RoleController;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use App\Models\User;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,17 +33,15 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
     });
     Route::middleware('role_or_permission:campaign.create')->group(function () {
         Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');
-        Route::get('/campaign/import', [CampaignController::class, 'import'])->name('campaign.import');
     });
 
     // Import
     Route::middleware('role_or_permission:import.index')->group(function () {
         Route::get('/import/{campaign}', [ImportController::class, 'index'])->name('import.index');
-        Route::get('/campaign/{campaign}/edit', [CampaignController::class, 'edit'])->name('campaign.edit');
     });
     Route::middleware('role_or_permission:campaign.create')->group(function () {
-        Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');
-        Route::get('/campaign/import', [CampaignController::class, 'import'])->name('campaign.import');
+        Route::post('/campaign/{campaign}/fichero', [ImportController::class, 'create'])->name('import.create');
+
     });
 
 });

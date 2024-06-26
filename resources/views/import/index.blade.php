@@ -5,11 +5,11 @@
             </h1>
             <div class="py-1 space-y-4">
                 <div class="">
-                    @include('errores')
+                    @include('errormessages')
                 </div>
                 <div class="flex justify-between">
                     <div class="flex w-10/12 space-x-3">
-                        filtrod
+                        filtros
                         {{-- @include('campaign.campaignfilters') --}}
                     </div>
                     @can('campaign.create')
@@ -25,20 +25,20 @@
                 <div class="">
                     <div class="">Selecciono el fichero</div>
                     <div class="">
-                        <form wire:submit="import" class="ml-4" id="form_import" enctype="multipart/form-data">
-                        {{-- <form id="import" role="form" action="import()" enctype="multipart/form-data" > --}}
-                            <div class="">
+                        <form id="formularioimport" role="form" method="post" action="{{ route('import.create',$campaign) }}" enctype="multipart/form-data" >
+                            @csrf
+                            <div class="row">
                                 <div class="form-group col">
                                     <label>Selecciona el fichero</label>
                                     <input type="file" class="form-control form-control-sm" id="fichero" name="fichero" value=""/>
                                 </div>
                             </div>
                             <div class="mt-5 ">
-                                <x-secondary-button wire:click="volver()">
+                                <x-secondary-button wire:click="cambiamodalsgh()">
                                     {{ __('Cancelar') }}
                                 </x-secondary-button>
                                 <x-button type="submit" class="bg-green-700 hover:bg-green-900" >
-                                    {{ __('Subir fichero') }}
+                                    {{ __('Subir Fichero') }}
                                 </x-button>
                             </div>
                         </form>
