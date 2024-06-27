@@ -3,21 +3,9 @@
         <div class="h-full p-1 mx-2">
             <h1 class="text-2xl font-semibold text-gray-900">Importación de datos
             </h1>
-            {{-- {{$mesagge}} --}}
-            <div class="py-1 space-y-4">
-                @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
-@if (session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
                 <div class="">
-                    @include('errormessages')
+                    @include('error')
+                    {{-- @include('errormessages') --}}
                 </div>
                 <div class="flex justify-between">
                     <div class="flex w-10/12 space-x-3">

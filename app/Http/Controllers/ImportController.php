@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Imports\DynamicImport;
 use App\Models\Campaign;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use PDOException;
 
 class ImportController extends Controller
 {
@@ -29,18 +29,26 @@ class ImportController extends Controller
 
         try{
             Excel::import(new DynamicImport($campaign->id), $request->file('fichero'));
-            return response()->json(['data'=>'Fichero importado successfully.',201]);
+            $campaign->estadoproceso='1';
+            $campaign->save();
+            return redirect()->back()->with('message', 'Fichero importado satisfactoriamente.');
+        } catch (PDOException $ex) {
+            // Ignorar errores de tipo PDOException
+            Log::warning('PDOException ignorada: ' . $ex->getMessage());
+            if($ex->getMessage()=='There is no active transaction'){
+                $campaign->estadoproceso='1';
+                $campaign->save();
+                return redirect()->back()->with('message', 'Los datos se importaron correctamente.E1');
+            }
+            else{
+                return redirect()->back()->with('errormessage', 'Ocurrió un error durante la importación. Por favor, inténtelo de nuevo.');
+            }
         }catch(\Exception $ex){
-            Log::info($ex);
-            $notification = array('message' => 'La imagen ha sido borrada.','alert-type' => 'success');
-            // return redirect()->back()->with($message='sdf');
-            return redirect()->back()->with('success', 'Los datos se importaron correctamente.');
-
-            // return response()->json(['data'=>'Some error has occur.',400]);
-
+            // Manejar cualquier otro tipo de error que ocurra durante la importación
+            \Log::error('Error durante la importación de datos: ' . $ex->getMessage());
+            return redirect()->back()->with('errormessage', 'Ocurrió un error durante la importación. Por favor, inténtelo de nuevo.');
         }
 
-        dd('sdf');
         // $this->dropTemporaryTable($campaign);
     }
 

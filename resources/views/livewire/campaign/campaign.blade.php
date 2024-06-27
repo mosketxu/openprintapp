@@ -24,7 +24,8 @@
         </div>
     </div>
     <div class="py-1 space-y-4">
-        @include('errormessages')
+        {{-- @include('errormessages') --}}
+        @include('error')
     </div>
     <div class="h-screen">
         <div class="flex-col space-y-4 text-gray-500">
