@@ -71,7 +71,59 @@ class ImportController extends Controller
                 }
                 continue; // Saltar todas las filas hasta encontrar "COD"
             }
-            // dd($encontrado);
+            // Preparar los datos para la inserción
+            $batch[] = [
+                'campaign_id' => $dato->campaign_id,
+                'cod' => $dato->cod,
+                'store'=>$dato->store,
+                'canal'=>$dato->canal,
+                'direccion'=>$dato->direccion,
+                'poblacion'=>$dato->poblacion,
+                'cp'=>$dato->cp,
+                'provincia'=>$dato->provincia,
+                'telefono'=>$dato->telefono,
+                'idioma'=>$dato->idioma
+            ];
+
+            // Si el lote alcanza el tamaño definido, insertar los datos y vaciar el lote
+            if (count($batch) >= $batchSize) {
+                DB::table('campaign_stores')->insert($batch);
+                $batch = [];
+            }
+        }
+
+        // Insertar cualquier lote restante
+        if (!empty($batch)) {
+            DB::table('campaign_stores')->insert($batch);
+        }
+
+
+        $campaign->estadoproceso='2';
+        $campaign->save();
+        return redirect()->back()->with('message', 'Las tiendas se importaron correctamente');
+
+    }
+
+    public function elementos(Campaign $campaign){
+
+        DB::table('campaign_elementos')->where('campaign_id', $campaign->id)->delete();
+
+        $datos=DB::table($campaign->id)->get();
+
+        // Variable para indicar si se ha encontrado "COD"
+        $encontrado = false;
+        $batchSize = 100; // Ajusta según sea necesario
+        $batch = [];
+
+        // Recorrer la colección para encontrar "COD"
+        foreach ($datos as $dato) {
+            // dd($dato);
+            if (!$encontrado) {
+                if (strtoupper($dato->cod) == "COD") {
+                    $encontrado = true;
+                }
+                continue; // Saltar todas las filas hasta encontrar "COD"
+            }
             // Preparar los datos para la inserción
             $batch[] = [
                 'campaign_id' => $dato->campaign_id,

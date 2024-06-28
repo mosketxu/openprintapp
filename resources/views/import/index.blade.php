@@ -56,6 +56,17 @@
                     </div>
                     <div class="p-2 bg-blue-100 border border-blue-500 rounded-md">
                         <h1 class="my-2 font-bold">Paso 3: Importar datos productos</h1>
+                        <form id="formularioimportelementos" class="text-sm" role="form" method="post" action="{{ route('import.elementos',$campaign) }}" >
+                            @csrf
+                            <div class="mt-5 ">
+                                <x-button type="submit" class="bg-green-700 hover:bg-green-900" >
+                                    {{ __('Procesar Elementos') }}
+                                </x-button>
+                            </div>
+                        </form>
+                        <div class="">
+                            Estado: {{$campaign->estadoproceso}}
+                        </div>
                     </div>
                     <div class="p-2 bg-blue-100 border border-blue-500 rounded-md">
                         <h1 class="my-2 font-bold">Paso 4: Importar datos campaña</h1>

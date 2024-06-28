@@ -42,6 +42,7 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
     Route::middleware('role_or_permission:campaign.create')->group(function () {
         Route::post('/campaign/{campaign}/import', [ImportController::class, 'import'])->name('import.import');
         Route::post('/campaign/{campaign}/tiendas', [ImportController::class, 'tiendas'])->name('import.tiendas');
+        Route::post('/campaign/{campaign}/elementos', [ImportController::class, 'elementos'])->name('import.elementos');
 
     });
 
