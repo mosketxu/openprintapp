@@ -34,6 +34,9 @@
 
             <!-- Page Content -->
             <main class="flex-grow">
+                <div class="bg-yellow-900"></div>
+                <div class="bg-yellow-800"></div>
+                <div class="bg-yellow-700"></div>
                 {{ $slot }}
             </main>
 

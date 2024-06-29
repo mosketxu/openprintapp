@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('campaign_id');
             $table->unsignedBigInteger('campaign_elemento_id');
             $table->unsignedBigInteger('campaign_store_id');
-            $table->integer('cantidad'); // Campo para almacenar la cantidad de elementos por tienda en la campaña
+            $table->integer('cantidad'); // Campo para almacenar la cantidad de elementos por store en la campaña
             $table->timestamps();
 
             // Claves foráneas

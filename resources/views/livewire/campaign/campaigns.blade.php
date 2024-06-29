@@ -16,7 +16,7 @@
                 @can('campaign.create')
                 <div class="flex flex-row-reverse w-2/12">
                     <div class="pt-3">
-                        <x-buttonblue  onclick="location.href = '{{ route('campaign.create') }}'" color="blue">{{ __('Nueva') }}</x-buttonblue>
+                        <x-button color='blue'  onclick="location.href = '{{ route('campaign.create') }}'" color="blue">{{ __('Nueva') }}</x-button>
                     </div>
                 </div>
                 @endcan
@@ -35,9 +35,6 @@
                     <div class="hidden pl-2 font-light lg:w-1/12 lg:flex " ><x-label>{{ __('F.Instal.3') }}</x-label></div>
                 </div>
                 @forelse ($campaigns as $campaign)
-
-                {{-- <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-gray-100 hover:cursor-pointer" wire:loading.class.delay="opacity-50" >
-                    <div class="flex w-9/12 md:w-10/12" onclick="location.href = '{{ route('cliente.oferta.editar',[$oferta,'i']) }}'"> --}}
 
                 <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-gray-100 hover:cursor-pointer"
                     onclick="location.href = '{{ route('campaign.edit',$campaign) }}'"

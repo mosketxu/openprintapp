@@ -30,6 +30,9 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
     Route::middleware('role_or_permission:campaign.index')->group(function () {
         Route::get('/campaign', [CampaignController::class, 'index'])->name('campaign.index');
         Route::get('/campaign/{campaign}/edit', [CampaignController::class, 'edit'])->name('campaign.edit');
+        Route::get('/campaign/{campaign}/stores', [CampaignController::class, 'stores'])->name('campaign.stores');
+        Route::get('/campaign/{campaign}/elementos', [CampaignController::class, 'elementos'])->name('campaign.elementos');
+        Route::get('/campaign/{campaign}/elementos', [CampaignController::class, 'elementosstores'])->name('campaign.elementosstores');
     });
     Route::middleware('role_or_permission:campaign.create')->group(function () {
         Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');
@@ -40,9 +43,9 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
         Route::get('/import/{campaign}', [ImportController::class, 'index'])->name('import.index');
     });
     Route::middleware('role_or_permission:campaign.create')->group(function () {
-        Route::post('/campaign/{campaign}/import', [ImportController::class, 'import'])->name('import.import');
-        Route::post('/campaign/{campaign}/tiendas', [ImportController::class, 'tiendas'])->name('import.tiendas');
-        Route::post('/campaign/{campaign}/elementos', [ImportController::class, 'elementos'])->name('import.elementos');
+        Route::post('/import/{campaign}', [ImportController::class, 'import'])->name('import.import');
+        Route::post('/import/{campaign}/stores', [ImportController::class, 'stores'])->name('import.stores');
+        Route::post('/import/{campaign}/elementos', [ImportController::class, 'elementos'])->name('import.elementos');
 
     });
 
