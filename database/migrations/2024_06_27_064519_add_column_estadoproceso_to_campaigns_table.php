@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('campaigns', function (Blueprint $table) {
             $table->integer('estadoproceso')->after('estado')->default('0');
+            $table->integer('numcolumnas')->after('estadoproceso')->default('0');
+            $table->integer('filacod')->after('numcolumnas')->default('0');
         });
     }
 
@@ -23,6 +25,8 @@ return new class extends Migration
     {
         Schema::table('campaigns', function (Blueprint $table) {
             $table->dropColumn('estadoproceso');
+            $table->dropColumn('numcolumnas');
+            $table->dropColumn('filacod');
         });
     }
 };

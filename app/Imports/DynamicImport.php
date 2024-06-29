@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\Campaign;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Collection;
@@ -10,7 +11,7 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Illuminate\Support\Facades\DB;
 use PDOException;
 
-class DynamicImport implements ToCollection
+class   DynamicImport implements ToCollection
 {
 
     protected $tableName;
@@ -48,10 +49,17 @@ class DynamicImport implements ToCollection
                 throw $e;
             }
 
+            $posicionCod=0;
+            $encontradoCod="0";
             foreach ($rows as $row) {
                 $rowArray = $row->toArray();
                 $dataToInsert = [];
-
+                if($encontradoCod==0)
+                    if(strtoupper($rowArray[0])!='COD')
+                        $posicionCod++;
+                    else
+                        $encontradoCod=1;
+                // dd($rowArray[0]);
                 $dataToInsert=[
                     'campaign_id' => $this->tableName,
                     'cod' => $rowArray[0],
@@ -71,6 +79,12 @@ class DynamicImport implements ToCollection
                 // $dataToInsert['campo100']= '50';
                 DB::table($this->tableName)->insert($dataToInsert);
             }
+
+            $campaign=Campaign::find($this->tableName);
+            $campaign->numcolumnas=$maxcolumnas;
+            $campaign->filacod=$posicionCod;
+            // dd($campaign);
+            $campaign->save();
 
             DB::commit();
 
