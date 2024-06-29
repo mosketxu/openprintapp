@@ -13,4 +13,10 @@ class CampaignElemento extends Model
 
     public function campaign(){return $this->belongsTo(Campaign::class,'campaign','id');}
 
+    public function campaigns(){
+        return $this->belongsToMany(Campaign::class, 'campaign_elemento_store')
+                    ->withPivot('cantidad')
+                    ->withTimestamps();
+    }
+
 }

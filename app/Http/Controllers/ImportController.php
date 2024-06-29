@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Imports\DynamicImport;
 use App\Models\Campaign;
 use App\Models\CampaignElemento;
+use App\Models\CampaignStore;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Log;
@@ -225,20 +226,23 @@ class ImportController extends Controller
 
     public function elementos(Campaign $campaign){
 
-        // voy a recorrer cada una de las columnas y en los primeros filaCod guardo el elemento y en los siguientes el numero de elemento por tienda.
+        // recorro cada una de las columnas y en los primeros filaCod guardo el elemento y en los siguientes el numero de elemento por tienda.
 
-        //primera columna
+        //borro los datos antes de volver a generar
         DB::table('campaign_elementos')->where('campaign_id', $campaign->id)->delete();
-        for ($i=1; $i < $campaign->numcolumnas-8; $i++) {
-            $idElemento=$this->insertaElemento($i,$campaign);
-            # code...
+
+        //recorro todas las columnas 1 por 1
+        for ($numcolumna=1; $numcolumna < $campaign->numcolumnas-8; $numcolumna++) {
+            $idElemento=$this->insertaElemento($numcolumna,$campaign);
+            // una vez obtenido el elemento itero por el resto de la columna para el conteo por elemento
+            $this->insertaElementosPorTienda($numcolumna,$idElemento,$campaign);
         }
         dd('avesr');
 
     }
 
-    function insertaElemento($i,$campaign) {
-        $nombreColumna="campo$i";
+    function insertaElemento($numcolumna,$campaign) {
+        $nombreColumna="campo$numcolumna";
         $elementos = DB::table($campaign->id)->select($nombreColumna)->take($campaign->filacod+1)->get();
 
         // Definir el mapeo entre los campos originales y los campos de la nueva tabla
@@ -264,6 +268,21 @@ class ImportController extends Controller
         ]));
 
         return $idInsertado;
+    }
+
+    function insertaElementosPorTienda($numcolumna,$idElemento,$campaign) {
+        $nombreColumna="campo$numcolumna";
+        $elementos = DB::table($campaign->id)->select('cod',$nombreColumna)->skip($campaign->filacod+1    )->take(PHP_INT_MAX)->get();
+
+        foreach ($elementos as $elemento) {
+            if($elemento->$nombreColumna){
+                $store=CampaignStore::where('cod',$elemento->cod)->where('campaign_id',$campaign->id)->first();
+                $campaign->elementos()->attach($idElemento, ['campaign_store_id' => $store->id, 'cantidad' => $elemento->$nombreColumna]);
+            }
+        }
+
+        // dd('aver');
+        // return $idInsertado;
     }
 
     static public function elementificador($elementos,$nombreColumna){

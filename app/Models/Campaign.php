@@ -15,6 +15,21 @@ class Campaign extends Model
     public function campaignstores(){return $this->hasMany(CampaignStore::class);}
     public function campaignelementos(){return $this->hasMany(CampaignElemento::class);}
 
+    public function elementos(){
+        return $this->belongsToMany(CampaignElemento::class, 'campaign_elemento_store')
+                    ->withPivot('cantidad')
+                    ->withTimestamps();
+    }
+
+    public function stores(){
+        return $this->belongsToMany(CampaignStore::class, 'campaign_elemento_store')
+                    ->withPivot('cantidad')
+                    ->withTimestamps();
+    }
+
+
+
+
     public function scopeSearch2($query, $busca){
         return $query->where('name', 'LIKE', "%$busca%")
         ->orWhere('fechaini', 'LIKE', "%$busca%")
