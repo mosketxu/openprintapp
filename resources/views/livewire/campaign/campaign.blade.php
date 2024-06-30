@@ -14,6 +14,11 @@
             </div>
             @endcan
             @if($campaign->id)
+            @can('campaign.edit')
+            <div class="ml-2">
+                <x-buttoncolor color='lime'  onclick="location.href = '{{ route('campaign.cabecera',$campaign) }}'" >{{ __('Cabecera') }}</x-buttoncolor>
+            </div>
+            @endcan
             @can('import.index')
             <div class="ml-2">
                 <x-buttoncolor color='green'  onclick="location.href = '{{ route('import.index',$campaign) }}'" >{{ __('Importar Datos') }}</x-buttoncolor>

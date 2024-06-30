@@ -3,6 +3,7 @@
 namespace App\Livewire\Campaign;
 
 use App\Models\Campaign as ModelsCampaign;
+use App\Models\CampaignCabecera;
 use App\Models\Entidad;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -87,7 +88,6 @@ class Campaign extends Component
         $i = $this->campaign->id ? $this->campaign->id : '';
         $message=$this->campaign->referencia . "Acción realizada satisfactoriamente";
 
-
         $camp=ModelsCampaign::updateOrCreate([
             'id'=>$i
         ],[
@@ -106,6 +106,37 @@ class Campaign extends Component
         );
 
         $this->showSuccessIndicator = true;
+        $cabecera=CampaignCabecera::where('campaign_id',$camp->id)->count();
+        if($cabecera=='0')
+            CampaignCabecera::create([
+                'campaign_id'=>$camp->id,
+                'campo0'=>'Imagen',
+                'campo1'=>'Campo1',
+                'campo2'=>'Campo2',
+                'campo3'=>'Campo3',
+                'campo4'=>'Campo4',
+                'campo5'=>'Campo5',
+                'campo6'=>'Categoria',
+                'campo7'=>'Archivo',
+                'campo8'=>'Material',
+                'campo9'=>'Medida',
+                'campo10'=>'Idioma',
+                'elementificador'=>'Elementificador',
+                'producto_id'=>'Producto',
+                'preciocoste_ud'=>'Precio',
+                'imagenelemento'=>'Fichero',
+                'bcampo0'=>true,
+                'bcampo1'=>true,
+                'bcampo2'=>true,
+                'bcampo3'=>true,
+                'bcampo4'=>true,
+                'bcampo5'=>true,
+                'bcampo6'=>true,
+                'bcampo7'=>true,
+                'bcampo8'=>true,
+                'bcampo9'=>true,
+                'bcampo10'=>true,
+            ]);
         // $this->dispatch('banner-message',['style'=>'success','message'=>$message]);
         // $this->dispatch('notify', $message);
 

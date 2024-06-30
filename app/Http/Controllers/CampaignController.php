@@ -37,4 +37,8 @@ class CampaignController extends Controller
         return view('campaign.elementos-q',compact('campaign'));
     }
 
+    public function cabecera(Campaign $campaign){
+        return view('campaign.cabecera',compact('campaign'));
+    }
+
 }

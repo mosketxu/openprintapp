@@ -15,6 +15,7 @@ class Campaign extends Model
     public function campaignStores(){return $this->hasMany(CampaignStore::class);}
     public function campaignElementos(){return $this->hasMany(CampaignElemento::class);}
     public function campaignStoreElementos(){return $this->hasMany(CampaignStoreElemento::class);}
+    public function cabecera(){return $this->hasOne(CampaignCabecera::class);}
 
     public function scopeSearch2($query, $busca){
         return $query->where('name', 'LIKE', "%$busca%")
