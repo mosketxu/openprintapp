@@ -14,9 +14,9 @@
                     @include('campaign.campaignfilters')
                 </div>
                 @can('campaign.create')
-                <div class="flex flex-row-reverse w-2/12">
+                <div class="flex flex-row-reverse w-2/12 mr-2">
                     <div class="pt-3">
-                        <x-button color='blue'  onclick="location.href = '{{ route('campaign.create') }}'" color="blue">{{ __('Nueva') }}</x-button>
+                        <x-buttoncolor color='blue'  onclick="location.href = '{{ route('campaign.create') }}'">{{ __('Nueva') }}</x-buttoncolor>
                     </div>
                 </div>
                 @endcan

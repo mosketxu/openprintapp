@@ -34,9 +34,28 @@
 
             <!-- Page Content -->
             <main class="flex-grow">
-                <div class="bg-yellow-900"></div>
-                <div class="bg-yellow-800"></div>
+                <div class="bg-blue-700"></div>
+                <div class="bg-blue-600"></div>
+                <div class="bg-blue-500"></div>
+                <div class="bg-gray-700"></div>
+                <div class="bg-gray-600"></div>
+                <div class="bg-gray-500"></div>
+                <div class="bg-green-700"></div>
+                <div class="bg-green-600"></div>
+                <div class="bg-green-500"></div>
+                <div class="bg-green-300"></div>
                 <div class="bg-yellow-700"></div>
+                <div class="bg-yellow-600"></div>
+                <div class="bg-yellow-500"></div>
+                <div class="bg-orange-700"></div>
+                <div class="bg-orange-600"></div>
+                <div class="bg-orange-500"></div>
+                <div class="bg-lime-700"></div>
+                <div class="bg-lime-600"></div>
+                <div class="bg-lime-500"></div>
+                <div class="bg-emerald-700"></div>
+                <div class="bg-emerald-600"></div>
+                <div class="bg-emerald-500"></div>
                 {{ $slot }}
             </main>
 

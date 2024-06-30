@@ -1,8 +1,6 @@
 <div class="">
-    {{-- @livewire('menu',['campaign'=>$campaign],key($campaign->id)) --}}
-
     <div class="p-1 mx-2">
-        <div class="flex flex-row space-x-8" >
+        <div class="flex p-1 mx-2" >
             <div class="">
                 @if($campaign->id)
                 <h1 class="text-2xl font-semibold text-gray-900">Campaña: {{ $campaign->name }}</h1>
@@ -10,27 +8,41 @@
                 <h1 class="text-2xl font-semibold text-gray-900">Nueva Campaña</h1>
                 @endif
             </div>
-            <div class="">
-                @can('campaign.create')
-                <x-button   onclick="location.href = '{{ route('campaign.create') }}'" >{{ __('Nueva') }}</x-button>
-                @endcan
-                @can('import.index')
-                <x-buttoncolor color='green'  onclick="location.href = '{{ route('import.index',$campaign) }}'" >{{ __('Importar Datos') }}</x-buttoncolor>
-                @endcan
-                @can('canpaign.stores')
-                <x-buttoncolor color='green' onclick="location.href = '{{ route('campaign.stores',$campaign) }}'" >{{ __('Stores de la campaña') }}</x-buttoncolor>
-                @endcan
-                @can('canpaign.stores')
-                <x-buttoncolor color='green'  onclick="location.href = '{{ route('campaign.elementos',$campaign) }}'" >{{ __('Elementos de la campaña') }}</x-buttoncolor>
-                @endcan
-                @can('campaign.delete')
-                <x-buttoncolor color='red'  wire:click.prevent="delete({{ $campaign->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()">{{ __('Eliminar') }}</x-buttoncolor>
-                @endcan
+            @can('campaign.create')
+            <div class="ml-2">
+                <x-buttoncolor   onclick="location.href = '{{ route('campaign.create') }}'" >{{ __('Nueva') }}</x-buttoncolor>
             </div>
+            @endcan
+            @if($campaign->id)
+            @can('import.index')
+            <div class="ml-2">
+                <x-buttoncolor color='green'  onclick="location.href = '{{ route('import.index',$campaign) }}'" >{{ __('Importar Datos') }}</x-buttoncolor>
+            </div>
+            @endcan
+            @can('campaign.index')
+            @if($campaign->estadoproceso>1)
+            <div class="ml-2">
+                <x-buttoncolor color='yellow' onclick="location.href = '{{ route('campaign.stores',$campaign) }}'" >{{ __('Lista de Stores') }}</x-buttoncolor>
+            </div>
+            @endif
+            @if($campaign->estadoproceso>2)
+            <div class="ml-2">
+                <x-buttoncolor color='gray'  onclick="location.href = '{{ route('campaign.elementos',$campaign) }}'" >{{ __('Lista de Elementos') }}</x-buttoncolor>
+            </div>
+            <div class="ml-2">
+                <x-buttoncolor color='orange'  onclick="location.href = '{{ route('campaign.storeelementos',$campaign) }}'" >{{ __('Detalle Pedido') }}</x-buttoncolor>
+            </div>
+            @endif
+            @endcan
+            @can('campaign.delete')
+            <div class="ml-auto">
+                <x-buttoncolor color='red'  wire:click.prevent="delete({{ $campaign->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()">{{ __('Eliminar') }}</x-buttoncolor>
+            </div>
+            @endcan
+            @endif
         </div>
     </div>
     <div class="py-1 space-y-4">
-        {{-- @include('errormessages') --}}
         @include('error')
     </div>
     <div class="h-screen">
@@ -122,7 +134,7 @@
                 <div class="flex mt-2 mb-2 ml-2 space-x-4">
                     <div class="space-x-3">
                         @can('campaign.create')
-                        <x-button color='blue' class="relative w-40 disabled:cursor-not-allowed disabled:opacity-75" >
+                        <x-buttoncolor color='blue' class="relative w-40 disabled:cursor-not-allowed disabled:opacity-75" >
                             {{ __('Guardar') }}
                             <div wire:loading.flex class="absolute top-0 bottom-0 right-0 flex items-center pr-4">
                                 <svg class="w-5 h-5 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -130,7 +142,7 @@
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>
                             </div>
-                        </x-button>
+                        </x-buttoncolor>
                         @endcan
                         <x-secondary-button  onclick="location.href = '{{route('campaign.index')}}'">{{ __('Volver') }}</x-secondary-button>
                     </div>

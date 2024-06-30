@@ -29,8 +29,8 @@ class CampaignController extends Controller
         return view('campaign.elementos',compact('campaign'));
     }
 
-    public function elementosstores(Campaign $campaign){
-        return view('campaign.elementosstores',compact('campaign'));
+    public function storeselementos(Campaign $campaign){
+        return view('campaign.storeselementos',compact('campaign'));
     }
 
 }

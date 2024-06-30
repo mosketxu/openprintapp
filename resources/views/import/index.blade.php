@@ -37,7 +37,7 @@
                             <x-buttoncolor type="submit" color="green" class="mt-10 w-80" >{{ __('Procesar Stores') }}</x-buttoncolor>
                         </form>
                         @if($campaign->estadoproceso>1)
-                        <x-buttoncolor color='blue'  class="my-2 w-80" onclick="location.href = '{{ route('campaign.stores',$campaign) }}'" >{{ __('Lista de stores') }}</x-buttoncolor>
+                        <x-buttoncolor color='yellow'  class="my-2 w-80" onclick="location.href = '{{ route('campaign.stores',$campaign) }}'" >{{ __('Lista de stores') }}</x-buttoncolor>
                         @endif
                         <div class="">
                             Estado: {{$campaign->estadoproceso}}
@@ -51,10 +51,10 @@
                         </form>
                         @if($campaign->estadoproceso>2)
                             <div class="">
-                                <x-buttoncolor color='blue'  class="my-2 w-80" onclick="location.href = '{{ route('campaign.elementos',$campaign) }}'" >{{ __('Lista de elementos') }}</x-buttoncolor>
+                                <x-buttoncolor color='gray'  class="my-2 w-80" onclick="location.href = '{{ route('campaign.elementos',$campaign) }}'" >{{ __('Lista de elementos') }}</x-buttoncolor>
                             </div>
                             <div class="">
-                                <x-buttoncolor color='yellow'  class="mb-2 w-80" onclick="location.href = '{{ route('campaign.elementosstores',$campaign) }}'" >{{ __('Detalle Pedido') }}</x-buttoncolor>
+                                <x-buttoncolor color='orange'  class="mb-2 w-80" onclick="location.href = '{{ route('campaign.storeselementos',$campaign) }}'" >{{ __('Detalle Pedido') }}</x-buttoncolor>
                             </div>
                         @endif
                         <div class="">Estado: {{$campaign->estadoproceso}}</div>

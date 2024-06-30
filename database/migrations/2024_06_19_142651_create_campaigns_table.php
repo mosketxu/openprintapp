@@ -17,13 +17,16 @@ return new class extends Migration
             $table->string('name', 100)->unique('campaigns_name_unique');
             $table->date('fechainicio');
             $table->date('fechafin')->nullable();
-            $table->integer('estado')->default('0');
             $table->date('fechainstal1')->nullable();
             $table->date('fechainstal2')->nullable();
             $table->date('fechainstal3')->nullable();
             $table->string('montaje1')->nullable();
             $table->string('montaje2')->nullable();
             $table->string('montaje3')->nullable();
+            $table->integer('estado')->default('0');
+            $table->integer('estadoproceso')->default('0');
+            $table->integer('numcolumnas')->default('0');
+            $table->integer('filacod')->default('0');
             $table->timestamps();
         });
     }

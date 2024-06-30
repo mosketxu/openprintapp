@@ -29,6 +29,7 @@ class Campaigns extends Component
             ->when(!empty($cliente->entidad_id),function($query) use($cliente){return $query->where('id','=',$cliente->entidad_id);})
             ->whereIn('entidadtipo_id',['1','3'])
             ->get();
+
         return view('livewire.campaign.campaigns',compact(['campaigns','entidades','cliente']));
     }
 

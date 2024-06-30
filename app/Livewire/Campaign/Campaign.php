@@ -106,8 +106,10 @@ class Campaign extends Component
         );
 
         $this->showSuccessIndicator = true;
-        $this->dispatch('banner-message',['style'=>'success','message'=>$message]);
-        $this->dispatch('notify', $message);
+        // $this->dispatch('banner-message',['style'=>'success','message'=>$message]);
+        // $this->dispatch('notify', $message);
+
+        return redirect()->route('campaign.edit',$camp)->with('message', 'Campaña creada correctamente');;
 
         // return $this->redirect('/');
     }

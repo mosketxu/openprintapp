@@ -12,23 +12,9 @@ class Campaign extends Model
     protected $fillable=['entidad_id','name','fechainicio','fechafin','estado','estadoproceso','numcolumnas','filacod','fechainstal1','fechainstal2','fechainstal3','montaje1','montaje2','montaje3'];
 
     public function cliente(){return $this->belongsTo(Entidad::class,'entidad_id','id')->withDefault(['entidad'=>'Grafitex']);}
-    public function campaignstores(){return $this->hasMany(CampaignStore::class);}
-    public function campaignelementos(){return $this->hasMany(CampaignElemento::class);}
-
-    public function elementos(){
-        return $this->belongsToMany(CampaignElemento::class, 'campaign_elemento_store')
-                    ->withPivot('cantidad')
-                    ->withTimestamps();
-    }
-
-    public function stores(){
-        return $this->belongsToMany(CampaignStore::class, 'campaign_elemento_store')
-                    ->withPivot('cantidad')
-                    ->withTimestamps();
-    }
-
-
-
+    public function campaignStores(){return $this->hasMany(CampaignStore::class);}
+    public function campaignElementos(){return $this->hasMany(CampaignElemento::class);}
+    public function campaignStoreElementos(){return $this->hasMany(CampaignStoreElemento::class);}
 
     public function scopeSearch2($query, $busca){
         return $query->where('name', 'LIKE', "%$busca%")

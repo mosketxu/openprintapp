@@ -11,12 +11,14 @@ class CampaignStore extends Model
 
     protected $fillable=['campaign_id','cod','store','canal','direccion','poblacion','cp','provincia','telefono','idioma'];
 
-    public function campaign(){return $this->belongsTo(Campaign::class,'campaign','id');}
-
-    public function campaigns(){
-        return $this->belongsToMany(Campaign::class, 'campaign_elemento_store')
-                    ->withPivot('cantidad')
-                    ->withTimestamps();
+    public function campaign(){return $this->belongsTo(Campaign::class);}
+    public function elementos(){
+        return $this->belongsToMany(CampaignElemento::class, 'campaign_store_elementos')
+            ->withPivot('cantidad')
+            ->withTimestamps();
     }
+    public function campaignStoreElementos(){return $this->hasMany(CampaignStoreElemento::class);}
+
+
 
 }

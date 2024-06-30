@@ -32,7 +32,7 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
         Route::get('/campaign/{campaign}/edit', [CampaignController::class, 'edit'])->name('campaign.edit');
         Route::get('/campaign/{campaign}/stores', [CampaignController::class, 'stores'])->name('campaign.stores');
         Route::get('/campaign/{campaign}/elementos', [CampaignController::class, 'elementos'])->name('campaign.elementos');
-        Route::get('/campaign/{campaign}/elementos', [CampaignController::class, 'elementosstores'])->name('campaign.elementosstores');
+        Route::get('/campaign/{campaign}/elementostores', [CampaignController::class, 'storeselementos'])->name('campaign.storeselementos');
     });
     Route::middleware('role_or_permission:campaign.create')->group(function () {
         Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');

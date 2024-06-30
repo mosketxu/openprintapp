@@ -6,6 +6,7 @@ use App\Imports\DynamicImport;
 use App\Models\Campaign;
 use App\Models\CampaignElemento;
 use App\Models\CampaignStore;
+use App\Models\CampaignStoreElemento;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Log;
@@ -99,6 +100,7 @@ class ImportController extends Controller
     }
 
     public function elementos(Campaign $campaign){
+
         DB::table('campaign_elementos')->where('campaign_id', $campaign->id)->delete();
 
         for ($numcolumna=1; $numcolumna < $campaign->numcolumnas-8; $numcolumna++) {
@@ -143,12 +145,22 @@ class ImportController extends Controller
 
     function insertaElementosPorStore($numcolumna,$idElemento,$campaign) {
         $nombreColumna="campo$numcolumna";
-        $elementos = DB::table($campaign->id)->select('cod',$nombreColumna)->skip($campaign->filacod+1    )->take(PHP_INT_MAX)->get();
+        $elementos = DB::table($campaign->id)->select('id','cod',$nombreColumna)->skip($campaign->filacod+1    )->take(PHP_INT_MAX)->get();
+
+        $insertData = [];
 
         foreach ($elementos as $elemento) {
             if($elemento->$nombreColumna){
                 $store=CampaignStore::where('cod',$elemento->cod)->where('campaign_id',$campaign->id)->first();
-                $campaign->elementos()->attach($idElemento, ['campaign_store_id' => $store->id, 'cantidad' => $elemento->$nombreColumna]);
+                CampaignStoreElemento::insert([
+                    'campaign_id' => $campaign->id,
+                    'campaign_store_id' => $store->id,
+                    'campaign_elemento_id' => $idElemento,
+                    'cantidad' => $elemento->$nombreColumna,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                    ]
+                );
             }
         }
     }
