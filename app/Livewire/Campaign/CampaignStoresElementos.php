@@ -16,10 +16,7 @@ class CampaignStoresElementos extends Component
     }
 
     public function render(){
-
-    $stores=CampaignStore::with('elementos')->whereHas('elementos')->where('campaign_id',$this->campaign->id)->get();
-
-
+        $stores=CampaignStore::with('elementos')->whereHas('elementos')->where('campaign_id',$this->campaign->id)->get();
         return view('livewire.campaign.campaign-stores-elementos',compact('stores'));
     }
 }

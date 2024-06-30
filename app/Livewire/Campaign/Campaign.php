@@ -66,20 +66,20 @@ class Campaign extends Component
 
 
     public function render(){
-        $cliente=Auth::user();
+        $ent=Auth::user();
 
         $entidades=Entidad::query()
-        ->when(!empty($cliente->entidad_id),function($query) use($cliente){return $query->where('id','=',$cliente->entidad_id);})
+        ->when(!empty($ent->entidad_id),function($query) use($ent){return $query->where('id','=',$ent->entidad_id);})
         ->whereIn('entidadtipo_id',['1','3'])
         ->get();
 
         if(!$this->entidad_id)
-            $this->entidad_id=$cliente->entidad_id ? $entidades->first()->id : '';
+            $this->entidad_id=$ent->entidad_id ? $entidades->first()->id : '';
 
         if($this->deshabilitado!='true')
-            return view('livewire.campaign.campaign',compact(['cliente','entidades']));
+            return view('livewire.campaign.campaign',compact(['ent','entidades']));
         else
-            return view('livewire.campaign.campaignshow',compact(['cliente','entidades']));
+            return view('livewire.campaign.campaignshow',compact(['ent','entidades']));
     }
 
     public function save(){
@@ -109,13 +109,9 @@ class Campaign extends Component
         // $this->dispatch('banner-message',['style'=>'success','message'=>$message]);
         // $this->dispatch('notify', $message);
 
-        return redirect()->route('campaign.edit',$camp)->with('message', 'Campaña creada correctamente');;
+        return redirect()->route('campaign.edit',$camp)->with('message', 'Campaña creada correctamente');
 
         // return $this->redirect('/');
-    }
-
-    public function import(){
-        dd('asd');
     }
 
     public function delete($campaign){

@@ -33,4 +33,8 @@ class CampaignController extends Controller
         return view('campaign.storeselementos',compact('campaign'));
     }
 
+    public function elementosQ(Campaign $campaign){
+        return view('campaign.elementos-q',compact('campaign'));
+    }
+
 }

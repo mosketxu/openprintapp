@@ -52,12 +52,12 @@
                 {{-- datos campaña --}}
                 <div class="p-2 space-y-2 text-sm rounded-md ">
                     <div class="w-full">
-                        @if($cliente->entidad_id)
-                            <x-label for="cliente">Cliente</x-label>
-                            <x-inputblue id="cliente" type="text" class="w-full " id="cliente" name="entidad_id" value="{{$entidades->first()->entidad}}" disabled/>
+                        @if($ent->entidad_id)
+                            <x-label for="entidad">Cliente</x-label>
+                            <x-inputblue id="entidad" type="text" class="w-full " id="entidad" name="entidad_id" value="{{$entidades->first()->entidad}}" disabled/>
                         @else
-                            <x-label for="clienteselect">Cliente</x-label>
-                            <x-selectcolor wire:model="entidad_id"  id="clienteselect" >
+                            <x-label for="entidadselect">entidad</x-label>
+                            <x-selectcolor wire:model="entidad_id"  id="entidadselect" >
                                 <option value="--Selecciona Cliente--"></option>
                                 @foreach ($entidades as $entidad)
                                 <option value="{{ $entidad->id }}">{{ $entidad->entidad }}</option>
@@ -75,12 +75,10 @@
                         <div class="w-full">
                             <x-label for="estado">Estado</x-label>
                             <x-selectcolor wire:model="estado"  id="estado" >
-                                @foreach ($entidades as $entidad)
                                 <option value="0"> Creada </option>
                                 <option value="1"> Iniciada </option>
                                 <option value="2"> Finalizada </option>
                                 <option value="3"> Cancelada </option>
-                                @endforeach
                             </x-selectcolor>
                             @error('estado') <span class="text-red-500 error">{{ $message }}</span> @enderror
                         </div>

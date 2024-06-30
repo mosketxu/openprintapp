@@ -1,7 +1,7 @@
 <div class="">
     <div class="h-full p-1 mx-2">
         <h1 class="text-2xl font-semibold text-gray-900">Campañas
-            @if($cliente->entidad_id)
+            @if($entidad->entidad_id)
             del cliente {{$entidades->first()->entidad}}
             @endif
         </h1>
@@ -39,7 +39,7 @@
                 <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-gray-100 hover:cursor-pointer"
                     onclick="location.href = '{{ route('campaign.edit',$campaign) }}'"
                     wire:loading.class.delay="opacity-50" >
-                    <div class="w-2/12 pr-2 lg:w-4/12 "><x-inputbluetransparent type="text"  class="" value="{{ $campaign->cliente->entidad }}" readonly/></div>
+                    <div class="w-2/12 pr-2 lg:w-4/12 "><x-inputbluetransparent type="text"  class="" value="{{ $campaign->entidad->entidad }}" readonly/></div>
                     <div class="w-4/12 pr-2 lg:w-4/12 "><x-inputbluetransparent type="text"  class="" value="{{ $campaign->name }}" readonly/></div>
                     <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $campaign->fini }}"  readonly/></div>
                     <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class=""  value="{{ $campaign->ffin }}"  readonly/></div>

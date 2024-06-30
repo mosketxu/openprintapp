@@ -1,4 +1,4 @@
-@if(!$cliente->entidad_id)
+@if(!$entidad->entidad_id)
     <div class="w-2/12 text-xs">
         <label class="px-1 text-gray-600">
             Cliente

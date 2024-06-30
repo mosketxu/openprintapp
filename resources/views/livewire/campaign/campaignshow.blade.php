@@ -23,8 +23,8 @@
                 {{-- datos campaña --}}
                 <div class="p-2 space-y-2 text-sm rounded-md ">
                     <div class="w-full">
-                        <x-label for="cliente">Cliente</x-label>
-                        <x-inputblue id="cliente" type="text" class="w-full " id="cliente" name="entidad_id" value="{{$entidades->first()->entidad}}" disabled/>
+                        <x-label for="entidad">Cliente</x-label>
+                        <x-inputblue id="entidad" type="text" class="w-full " id="entidad" name="entidad_id" value="{{$entidades->first()->entidad}}" disabled/>
                     </div>
                     <div class="flex w-full space-x-1">
                         <div class="w-full">
