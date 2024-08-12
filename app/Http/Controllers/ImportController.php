@@ -32,6 +32,7 @@ class ImportController extends Controller
         try{
             Excel::import(new DynamicImport($campaign->id), $request->file('fichero'));
             $campaign->estadoproceso='1';
+            $campaign->fichero=$request->file('fichero')->getClientOriginalName();
             $campaign->save();
             return redirect()->back()->with('message', 'Fichero importado satisfactoriamente.');
         } catch (PDOException $ex) {
@@ -39,6 +40,7 @@ class ImportController extends Controller
             Log::warning('PDOException ignorada: ' . $ex->getMessage());
             if($ex->getMessage()=='There is no active transaction'){
                 $campaign->estadoproceso='1';
+                $campaign->fichero=$request->file('fichero')->getClientOriginalName();
                 $campaign->save();
                 return redirect()->back()->with('message', 'Los datos se importaron correctamente.E1');
             }
