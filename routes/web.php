@@ -14,8 +14,6 @@ Route::get('/', function () {
 Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(function () {
     Route::get('/dashboard', function () {
         // dd(User::with('roles')->find('2'));
-
-
         // dd(Auth::user()->hasRole('Cliente'));
         // dd(Auth::user()->hasRole('Cliente'));
         if (Auth::user()->hasRole('Admin')) return view('dashboard');

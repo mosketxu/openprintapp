@@ -25,19 +25,15 @@
             </div>
             @endcan
             @can('campaign.index')
-            @if($campaign->estadoproceso>1)
             <div class="ml-2">
                 <x-buttoncolor color='yellow' onclick="location.href = '{{ route('campaign.stores',$campaign) }}'" >{{ __('Lista de Stores') }}</x-buttoncolor>
             </div>
-            @endif
-            @if($campaign->estadoproceso>2)
             <div class="ml-2">
                 <x-buttoncolor color='gray'  onclick="location.href = '{{ route('campaign.elementos',$campaign) }}'" >{{ __('Lista de Elementos') }}</x-buttoncolor>
             </div>
             <div class="ml-2">
                 <x-buttoncolor color='orange'  onclick="location.href = '{{ route('campaign.storeelementos',$campaign) }}'" >{{ __('Detalle Pedido') }}</x-buttoncolor>
             </div>
-            @endif
             @endcan
             @can('campaign.delete')
             <div class="ml-auto">

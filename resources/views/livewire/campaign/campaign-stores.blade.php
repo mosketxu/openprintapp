@@ -1,6 +1,6 @@
 <div class="">
     <div class="h-full p-1 mx-2">
-        <h1 class="text-2xl font-semibold text-gray-900">Stores de la Campaña: {{$campaign->name}} del cliente {{$campaign->cliente->entidad}}</h1>
+        <h1 class="text-2xl font-semibold text-gray-900">Stores de la Campaña: {{$campaign->name}} del cliente {{$campaign->entidad->entidad}}</h1>
         <div class="py-1 space-y-4">
             {{-- <div class="">
                 @include('errores')

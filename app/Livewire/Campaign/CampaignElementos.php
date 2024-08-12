@@ -4,6 +4,7 @@ namespace App\Livewire\Campaign;
 
 use App\Models\CampaignElemento;
 use App\Models\Campaign;
+use App\Models\CampaignCabecera;
 use Livewire\Component;
 
 class CampaignElementos extends Component
@@ -17,13 +18,13 @@ class CampaignElementos extends Component
     }
 
     public function render(){
-
+        $cabecera=CampaignCabecera::where('campaign_id',$this->campaign->id)->first();
         $elementos=CampaignElemento::query()
         // ->when($this->search!='',function($query) {return $query->where('store','LIKE','%'.$this->search.'%');})
         ->where('campaign_id',$this->campaign->id)
         ->get();
 
-        return view('livewire.campaign.campaign-elementos', compact('elementos'));
+        return view('livewire.campaign.campaign-elementos', compact('elementos','cabecera'));
     }
 
 }
