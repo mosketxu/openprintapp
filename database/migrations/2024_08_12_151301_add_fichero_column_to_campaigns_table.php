@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('campaigns', function (Blueprint $table) {
             $table->string('fichero')->after('filacod')->nullable();
+            $table->datetime('fechafichero')->after('fichero')->nullable();
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('campaigns', function (Blueprint $table) {
             $table->dropColumn('fichero');
+            $table->dropColumn('fechafichero');
         });
     }
 };

@@ -18,7 +18,8 @@
             <div class="p-2 m-2 border-2 border-blue-800 rounded-md">
                 <div class="font-bold">Fichero importado:</div>
                 <div class="px-1 font-bold text-white bg-black rounded-md">{{$campaign->fichero}}</div>
-                <div class="my-2"><x-buttoncolor color='blue'  class=" w-80" onclick="location.href = '{{ route('campaign.stores',$campaign) }}'" >{{ __('Datos importados') }}</x-buttoncolor></div>
+                <div class="px-1 font-bold rounded-md">Fecha/hora importación: {{ $fechaspain }}</div>
+                <div class="my-2"><x-buttoncolor color='blue'  class=" w-80" onclick="location.href = '{{ route('campaign.datos',$campaign) }}'" >{{ __('Visualizar datos importados') }}</x-buttoncolor></div>
             </div>
             <div class="p-2 m-2 border-2 border-blue-800 rounded-md">
                 <div class="text-red-500">Si desea importar un nuevo fichero tenga en cuenta que se borraran todos los datos de las tiendas y los productos generados en la primera ocasión</div>
@@ -37,17 +38,26 @@
     </div>
     <div class="p-2 bg-blue-100 border border-blue-500 rounded-md w-ful lg:w-6/12">
         <h1 class="m-2 text-xl font-bold">Paso 2: Procesar datos</h1>
-        <form wire:submit.prevent="stores" class="">
-            <x-buttoncolor type="submit" color="green" class="m-2 w-80" >{{ __('Procesar') }}</x-buttoncolor>
-        </form>
-        <div class="p-2 m-2 border-2 border-blue-800 rounded-md">
+        @if($campaign->estadoproceso<1)
+            <div class="p-2 text-red-500">
+                Hay que ejecutar primero el Paso 1
+            </div>
+        @else
+            <form wire:submit.prevent="stores" class="">
+                <x-buttoncolor type="submit" color="green" class="m-2 w-80" >{{ __('Procesar') }}</x-buttoncolor>
+            </form>
+
             @if($campaign->estadoproceso>1)
-            <div class=""><x-buttoncolor color='yellow'  class="m-2 w-80" onclick="location.href = '{{ route('campaign.stores',$campaign) }}'" >{{ __('Lista de stores') }}</x-buttoncolor></div>
+            <div class="p-2 m-2 border-2 border-blue-800 rounded-md">
+                @if($campaign->estadoproceso>1)
+                <div class=""><x-buttoncolor color='yellow'  class="m-2 w-80" onclick="location.href = '{{ route('campaign.stores',$campaign) }}'" >{{ __('Lista de stores') }}</x-buttoncolor></div>
+                @endif
+                @if($campaign->estadoproceso>2)
+                <div class=""><x-buttoncolor color='gray'  class="m-2 w-80" onclick="location.href = '{{ route('campaign.elementos',$campaign) }}'" >{{ __('Lista de elementos') }}</x-buttoncolor></div>
+                <div class=""><x-buttoncolor color='orange'  class="m-2 w-80" onclick="location.href = '{{ route('campaign.storeelementos',$campaign) }}'" >{{ __('Detalle Pedido') }}</x-buttoncolor></div>
+                @endif
+            </div>
             @endif
-            @if($campaign->estadoproceso>2)
-            <div class=""><x-buttoncolor color='gray'  class="m-2 w-80" onclick="location.href = '{{ route('campaign.elementos',$campaign) }}'" >{{ __('Lista de elementos') }}</x-buttoncolor></div>
-            <div class=""><x-buttoncolor color='orange'  class="m-2 w-80" onclick="location.href = '{{ route('campaign.storeelementos',$campaign) }}'" >{{ __('Detalle Pedido') }}</x-buttoncolor></div>
-            @endif
-        </div>
+        @endif
     </div>
 </div>

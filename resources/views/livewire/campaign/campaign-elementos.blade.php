@@ -95,8 +95,11 @@
                     </div>
                 @endforelse
             </div>
+            <div class="mt-4">
+                {{ $elementos->links() }}
+            </div>
             <div class="m-3">
-                <x-secondary-button  onclick="location.href = '{{ route('campaign.edit',$campaign) }}'">{{ __('Volver') }}</x-secondary-button>
+                <x-secondary-button  onclick="location.href = '{{ route('import.index',$campaign) }}'">{{ __('Volver') }}</x-secondary-button>
             </div>
         </div>
     </div>

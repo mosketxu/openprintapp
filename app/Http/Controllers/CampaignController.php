@@ -21,6 +21,10 @@ class CampaignController extends Controller
         return view('campaign.edit',compact('campaign'));
     }
 
+    public function datos(Campaign $campaign){
+        return view('campaign.datos',compact('campaign'));
+    }
+
     public function stores(Campaign $campaign){
         return view('campaign.stores',compact('campaign'));
     }

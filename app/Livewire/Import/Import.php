@@ -5,6 +5,7 @@ namespace App\Livewire\Import;
 use App\Models\Campaign;
 use App\Models\CampaignStore;
 use App\Models\CampaignStoreElemento;
+use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 // use Illuminate\Support\Facades\Schema;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 class Import extends Component
 {
     public $campaign;
+    public $fechaspain;
     public $estadoproceso='0';
 
     function mount(Campaign $campaign) {
@@ -21,6 +23,7 @@ class Import extends Component
     }
 
     public function render(){
+        $this->fechaspain=Carbon::parse($this->campaign->fechafichero)->timezone('Europe/Madrid');
         return view('livewire.import.import');
     }
 

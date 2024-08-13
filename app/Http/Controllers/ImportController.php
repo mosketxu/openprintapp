@@ -7,6 +7,7 @@ use App\Models\Campaign;
 use App\Models\CampaignElemento;
 use App\Models\CampaignStore;
 use App\Models\CampaignStoreElemento;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Log;
@@ -33,6 +34,7 @@ class ImportController extends Controller
             Excel::import(new DynamicImport($campaign->id), $request->file('fichero'));
             $campaign->estadoproceso='1';
             $campaign->fichero=$request->file('fichero')->getClientOriginalName();
+            $campaign->fechafichero=Carbon::now();
             $campaign->save();
             return redirect()->back()->with('message', 'Fichero importado satisfactoriamente.');
         } catch (PDOException $ex) {
@@ -41,6 +43,7 @@ class ImportController extends Controller
             if($ex->getMessage()=='There is no active transaction'){
                 $campaign->estadoproceso='1';
                 $campaign->fichero=$request->file('fichero')->getClientOriginalName();
+                $campaign->fechafichero=Carbon::now();
                 $campaign->save();
                 return redirect()->back()->with('message', 'Los datos se importaron correctamente.E1');
             }

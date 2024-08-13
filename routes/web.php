@@ -29,6 +29,7 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
         Route::get('/campaign', [CampaignController::class, 'index'])->name('campaign.index');
         Route::get('/campaign/{campaign}/cabecera', [CampaignController::class, 'cabecera'])->name('campaign.cabecera');
         Route::get('/campaign/{campaign}/edit', [CampaignController::class, 'edit'])->name('campaign.edit');
+        Route::get('/campaign/{campaign}/datos', [CampaignController::class, 'datos'])->name('campaign.datos');
         Route::get('/campaign/{campaign}/stores', [CampaignController::class, 'stores'])->name('campaign.stores');
         Route::get('/campaign/{campaign}/elementos', [CampaignController::class, 'elementos'])->name('campaign.elementos');
         Route::get('/campaign/{campaign}/store/elementos', [CampaignController::class, 'storeselementos'])->name('campaign.storeelementos');
