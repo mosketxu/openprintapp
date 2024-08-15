@@ -7,4 +7,5 @@ return [
     Spatie\Permission\PermissionServiceProvider::class,
     Barryvdh\Debugbar\ServiceProvider::class,
     Maatwebsite\Excel\ExcelServiceProvider::class,
+    // Intervention\Image\ImageServiceProvider::class,
 ];

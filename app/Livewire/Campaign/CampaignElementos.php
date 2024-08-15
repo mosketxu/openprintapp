@@ -24,8 +24,9 @@ class CampaignElementos extends Component
         $elementos=CampaignElemento::query()
         // ->when($this->search!='',function($query) {return $query->where('store','LIKE','%'.$this->search.'%');})
         ->where('campaign_id',$this->campaign->id)
-        ->paginate(15);
+        ->paginate(7);
         // ->get();
+        // dd($cabecera);
 
         return view('livewire.campaign.campaign-elementos', compact('elementos','cabecera'));
     }

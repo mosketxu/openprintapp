@@ -137,8 +137,6 @@ class Campaign extends Component
                 'bcampo9'=>true,
                 'bcampo10'=>true,
             ]);
-        // $this->dispatch('banner-message',['style'=>'success','message'=>$message]);
-        // $this->dispatch('notify', $message);
 
         return redirect()->route('campaign.edit',$camp)->with('message', 'Campaña creada correctamente');
 
@@ -147,13 +145,13 @@ class Campaign extends Component
 
     public function delete($campaign){
         $camp = ModelsCampaign::find($campaign);
-        if(Auth::user()->entidad_id)
-            if($camp->entidad_id!=Auth::user()->entidad_id)
-                $this->dispatch('notifyred', 'No es propietario de esta campaña:');
-            elseif($camp && $this->authorize('campaign.delete',$camp)) {
-                $camp->delete();
-                $this->dispatch('notify', 'La Campaña: '.$camp->name.' ha sido eliminada!');
-            }
+
+        if(!Auth::user()->hasRole(['Admin','Gestion']))
+            $this->dispatch('notifyred', 'No tiene autorización para eliminar esta campaña:');
+        elseif($camp && $this->authorize('campaign.delete',$camp)) {
+            $camp->delete();
+            return redirect()->route('campaign.index',$camp)->with('message', 'Campaña '.$camp->name .' eliminada.');
+        }
     }
 
 }
