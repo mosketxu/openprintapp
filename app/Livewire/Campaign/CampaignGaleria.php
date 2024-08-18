@@ -90,9 +90,7 @@ class CampaignGaleria extends Component
 
             // Generate Thumbnail Image Upload on Folder Code
             $destinationPathThumbnail = public_path($originalPath).'thumbnails/thumb-';
-            $imageUpload->resize(null,144,function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $imageUpload->scaleDown(width: 200);
             $imageUpload->save($destinationPathThumbnail.$nombre);
 
             $this->campelemento->update([

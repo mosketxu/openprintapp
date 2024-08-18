@@ -13,6 +13,7 @@ class CampaignStoreElemento extends Model
 
     public function campaign(){return $this->belongsTo(Campaign::class);}
     public function campaignStore(){return $this->belongsTo(CampaignStore::class);}
-    public function campaignElemento(){return $this->belongsTo(CampaignStoreElemento::class);}
+    public function campaignElemento(){return $this->belongsTo(CampaignElemento::class);}
+    // public function campaignElemento(){return $this->belongsTo(CampaignStoreElemento::class);}
 
 }

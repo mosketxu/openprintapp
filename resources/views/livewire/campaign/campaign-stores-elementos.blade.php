@@ -8,6 +8,8 @@
             <div class="ml-auto">
                 <x-buttoncolor color='blue'  onclick="location.href = '{{ route('campaign.storeelementos',$campaign) }}'">{{ __('Elementos x Store') }}</x-buttoncolor>
                 <x-buttoncolor color='orange'  onclick="location.href = '{{ route('campaign.elementosQ',$campaign) }}'">{{ __('Elementos de la campaña') }}</x-buttoncolor>
+                <x-buttoncolor color='red'  onclick="location.href = '{{ route('campaign.etiquetaspdf',$campaign) }}'">{{ __('Etiquetas') }}</x-buttoncolor>
+
             </div>
         </div>
         <div class="">

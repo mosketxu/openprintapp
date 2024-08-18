@@ -34,6 +34,7 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
         Route::get('/campaign/{campaign}/elementos', [CampaignController::class, 'elementos'])->name('campaign.elementos');
         Route::get('/campaign/{campaign}/store/elementos', [CampaignController::class, 'storeselementos'])->name('campaign.storeelementos');
         Route::get('/campaign/{campaign}/elementos/q', [CampaignController::class, 'elementosQ'])->name('campaign.elementosQ');
+        Route::get('/campaign/{campaign}/etiquetaspdf', [CampaignController::class, 'etiquetaspdf'])->name('campaign.etiquetaspdf');
     });
     Route::middleware('role_or_permission:campaign.create')->group(function () {
         Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');

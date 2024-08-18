@@ -70,6 +70,21 @@
                     <x-input class="" wire:model="campo10" />
                     <x-checkbox class="mt-4 ml-8"  wire:model="bcampo10" />
                 </div>
+                <div class="flex space-x-2">
+                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Producto') }}" disabled />
+                    <x-input class="" wire:model="producto_id" />
+                    <x-checkbox class="mt-4 ml-8"  wire:model="bproducto" />
+                </div>
+                <div class="flex space-x-2">
+                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('P.Coste') }}" disabled />
+                    <x-input class="" wire:model="preciocoste_ud" />
+                    <x-checkbox class="mt-4 ml-8"  wire:model="bpreciocoste" />
+                </div>
+                <div class="flex space-x-2">
+                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Imagen') }}" disabled />
+                    <x-input class="" wire:model="imagenelemento" />
+                    <x-checkbox class="mt-4 ml-8"  wire:model="bimagenelemento" />
+                </div>
             </div>
             <div class="flex mt-2 mb-2 ml-2 space-x-4">
                 <div class="space-x-3">

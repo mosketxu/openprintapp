@@ -136,6 +136,9 @@ class Campaign extends Component
                 'bcampo8'=>true,
                 'bcampo9'=>true,
                 'bcampo10'=>true,
+                'bproducto'=>true,
+                'bpreciocoste'=>false,
+                'bimagenelemento'=>true,
             ]);
 
         return redirect()->route('campaign.edit',$camp)->with('message', 'Campaña creada correctamente');

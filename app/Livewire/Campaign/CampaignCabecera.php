@@ -37,6 +37,10 @@ class CampaignCabecera extends Component
     public $bcampo8;
     public $bcampo9;
     public $bcampo10;
+    public $bproducto;
+    public $bpreciocoste;
+    public $bimagenelemento;
+
 
     protected function rules(){
         return [
@@ -83,6 +87,10 @@ class CampaignCabecera extends Component
         $this->bcampo8=$this->cabecera->bcampo8==1 ? true : false;
         $this->bcampo9=$this->cabecera->bcampo9==1 ? true : false;
         $this->bcampo10=$this->cabecera->bcampo10==1 ? true : false;
+        $this->bproducto=$this->cabecera->bproducto==1 ? true :false;
+        $this->bpreciocoste=$this->cabecera->bpreciocoste==1 ? false :true;
+        $this->bimagenelemento=$this->cabecera->bimagenelemento==1 ? true :false;
+
     }
 
     public function render()
@@ -117,6 +125,9 @@ class CampaignCabecera extends Component
             'bcampo8'=>$this->bcampo8,
             'bcampo9'=>$this->bcampo9,
             'bcampo10'=>$this->bcampo10,
+            'bproducto'=>$this->bproducto,
+            'bpreciocoste'=>$this->bpreciocoste,
+            'bimagenelemento'=>$this->bimagenelemento,
         ]);
 
         // $this->dispatch('banner-message',['style'=>'success','message'=>$message]);
