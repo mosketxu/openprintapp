@@ -20,9 +20,7 @@
                     </div>
                 </div>
                 @endcan
-
             </div>
-
             <div class="">
                 <div class="flex w-full py-2 pl-2 text-sm text-gray-500 bg-blue-100 rounded-t-md">
                     <div class="w-2/12 pl-2 font-light lg:w-4/12" ><x-label>{{ __('Cliente') }}</x-label> </div>

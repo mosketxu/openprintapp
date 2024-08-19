@@ -1,14 +1,18 @@
 <div class="">
-    <div class="h-full p-1 mx-2">
-        <h1 class="text-2xl font-semibold text-gray-900">Stores de la Campaña: {{$campaign->name}} del cliente {{$campaign->entidad->entidad}}</h1>
+    <div class="p-1 mx-2">
+        <div class="flex p-1 mx-2">
+            <div class="">
+                <h1 class="text-2xl font-semibold text-gray-900">Stores</h1>
+                <h2 class="text-xl font-semibold text-gray-900">Campaña: {{$campaign->name}}</h2>
+                <h2 class="text-lg font-semibold text-gray-900">Cliente: {{$campaign->entidad->entidad}}</h2>
+            </div>
+            @if($campaign->id)
+            @include('campaign.acciones')
+            @endif
+        </div>
         <div class="py-1 space-y-4">
-            {{-- <div class="">
-                @include('errores')
-            </div> --}}
-            <div class="flex justify-between">
-                <div class="flex w-10/12 space-x-3">
-                    @include('campaign.campaignstoresfilters')
-                </div>
+            <div class="flex w-10/12 space-x-3">
+                @include('campaign.campaignstoresfilters')
             </div>
             <div class="">
                 <div class="flex w-full py-2 pl-2 text-sm text-gray-500 bg-blue-100 rounded-t-md">

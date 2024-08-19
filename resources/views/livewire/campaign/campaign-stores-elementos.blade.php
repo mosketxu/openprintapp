@@ -1,16 +1,14 @@
 <div class="">
-    <div class="h-full p-1 mx-2">
-        <div class="flex">
+    <div class="p-1 mx-2">
+        <div class="flex p-1 mx-2">
             <div class="">
-                <h1 class="text-2xl font-semibold text-gray-900">Elementos por tienda de la Campaña {{ $campaign->name }}</h1>
-                <h2 class="text-xl font-semibold text-gray-900">Cliente {{ $campaign->entidad->entidad }}</h2>
+                <h1 class="text-2xl font-semibold text-gray-900">Elementos por tienda</h1>
+                <h2 class="text-xl font-semibold text-gray-900">Campaña: {{$campaign->name}}</h2>
+                <h2 class="text-lg font-semibold text-gray-900">Cliente: {{$campaign->entidad->entidad}}</h2>
             </div>
-            <div class="ml-auto">
-                <x-buttoncolor color='blue'  onclick="location.href = '{{ route('campaign.storeelementos',$campaign) }}'">{{ __('Elementos x Store') }}</x-buttoncolor>
-                <x-buttoncolor color='orange'  onclick="location.href = '{{ route('campaign.elementosQ',$campaign) }}'">{{ __('Elementos de la campaña') }}</x-buttoncolor>
-                <x-buttoncolor color='red'  onclick="location.href = '{{ route('campaign.etiquetaspdf',$campaign) }}'">{{ __('Etiquetas') }}</x-buttoncolor>
-
-            </div>
+            @if($campaign->id)
+            @include('campaign.acciones')
+            @endif
         </div>
         <div class="">
             <div class="flex w-full py-2 pl-2 text-sm text-gray-500 bg-blue-100 rounded-t-md">

@@ -1,9 +1,10 @@
-<a {{ $attributes->merge(['class' => 'mx-1 inline-block w-6 h-6']) }} >
+<a {{ $attributes->merge(['type' => 'button', 'class' => 'w-8 text-blue-500 transform hover:text-blue-700 hover:scale-125']) }}  title="Editar">
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         stroke="currentColor"
-        viewBox="0 0 24 24" >
+        viewBox="0 0 24 24"
+        class="w-6">
         <path
             stroke-linecap="round"
             stroke-linejoin="round"

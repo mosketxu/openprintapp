@@ -14,32 +14,7 @@
             </div>
             @endcan
             @if($campaign->id)
-            @can('campaign.edit')
-            <div class="ml-2">
-                <x-buttoncolor color='lime'  onclick="location.href = '{{ route('campaign.cabecera',$campaign) }}'" >{{ __('Cabecera') }}</x-buttoncolor>
-            </div>
-            @endcan
-            @can('import.index')
-            <div class="ml-2">
-                <x-buttoncolor color='green'  onclick="location.href = '{{ route('import.index',$campaign) }}'" >{{ __('Importar Datos') }}</x-buttoncolor>
-            </div>
-            @endcan
-            @can('campaign.index')
-            <div class="ml-2">
-                <x-buttoncolor color='yellow' onclick="location.href = '{{ route('campaign.stores',$campaign) }}'" >{{ __('Lista de Stores') }}</x-buttoncolor>
-            </div>
-            <div class="ml-2">
-                <x-buttoncolor color='gray'  onclick="location.href = '{{ route('campaign.elementos',$campaign) }}'" >{{ __('Lista de Elementos') }}</x-buttoncolor>
-            </div>
-            <div class="ml-2">
-                <x-buttoncolor color='orange'  onclick="location.href = '{{ route('campaign.storeelementos',$campaign) }}'" >{{ __('Detalle Pedido') }}</x-buttoncolor>
-            </div>
-            @endcan
-            @can('campaign.delete')
-            <div class="ml-auto">
-                <x-buttoncolor color='red'  wire:click.prevent="delete({{ $campaign->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()">{{ __('Eliminar') }}</x-buttoncolor>
-            </div>
-            @endcan
+            @include('campaign.acciones')
             @endif
         </div>
     </div>
