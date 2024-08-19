@@ -45,7 +45,7 @@ class CampaignElementoController extends Controller
      */
     public function edit(CampaignElemento $campaignElemento)
     {
-        //
+        return view('campaignelemento.edit',compact('campaignElemento'));
     }
 
     /**

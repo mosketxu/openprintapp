@@ -41,8 +41,8 @@ return new class extends Migration
             $table->boolean('bcampo9')->default(true);
             $table->boolean('bcampo10')->default(true);
             $table->boolean('bproducto')->default(true);
-            $table->boolean('bpreciocoste')->default(false);
-            $table->boolean('bimagenelemento')->default(false);
+            $table->boolean('bpreciocoste')->default(true);
+            $table->boolean('bimagenelemento')->default(true);
             $table->timestamps();
         });
     }

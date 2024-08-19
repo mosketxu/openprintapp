@@ -2,11 +2,16 @@
     @can('campaign.index')
     <div class="w-8">
         <div class="w-6 ml-2 ">
-            <x-icon.campground-a href="{{route('campaign.index') }}" class="h-8 text-orange-600" title="Campañas"/>
+            <x-icon.tents-a href="{{route('campaign.index') }}" class="h-8 text-orange-600" title="Campañas"/>
         </div>
     </div>
     @endcan
     @can('campaign.edit')
+    <div class="w-8">
+        <div class="w-6 ml-2 ">
+            <x-icon.campground-a href="{{route('campaign.edit',$campaign) }}" class="h-8 text-green-500" title="Campaña Actual"/>
+        </div>
+    </div>
     <div class="items-center w-8">
         <div class="items-center w-5 ml-2">
             <x-icon.heading-solid-a href="{{route('campaign.cabecera',$campaign) }}" class="w-5 text-lime-600" title="Cabecera"/>

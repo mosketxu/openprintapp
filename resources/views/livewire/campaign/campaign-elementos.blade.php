@@ -51,11 +51,13 @@
                     @if($cabecera->bcampo10==true)
                     <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo10 }}" readonly/></div>
                     @endif
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="Producto" readonly/></div>
                     <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ __('Updated_at') }}" readonly/></div>
                     <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ __('Imagen') }}" readonly/></div>
                 </div>
                 @forelse ($elementos as $elemento)
                 <div class="flex items-center text-xs text-gray-500 border-t-0 border-y hover:bg-gray-100 hover:cursor-pointer"
+                    onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'"
                     wire:loading.class.delay="opacity-50" >
                     @if($cabecera->bcampo0==true)
                     <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->imagen }}" readonly/></div>
@@ -91,6 +93,7 @@
                     <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->idioma }}" readonly/></div>
                         {{ $elemento->id }}
                     @endif
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->producto->descripcion }}" readonly/></div>
                     <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->updated_at }}" readonly/></div>
                     <div class="w-1/12 pl-2 font-light" >
                         @livewire('campaign.campaign-galeria',['campaign'=>$campaign,'elemento'=>$elemento,key($elemento->id)])

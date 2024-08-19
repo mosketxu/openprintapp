@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\CampaignElementoController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\TempTableController;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,10 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
     });
     Route::middleware('role_or_permission:campaign.create')->group(function () {
         Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');
+    });
+
+    Route::middleware('role_or_permission:campaign.edit')->group(function () {
+        Route::get('/campaignelemento/{campaignElemento}/edit', [CampaignElementoController::class, 'edit'])->name('campaignelemento.edit');
     });
 
     // Import
