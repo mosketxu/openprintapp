@@ -14,8 +14,6 @@
                     <x-icon.xls-a id="xls" wire:click="storesXls" class="w-6 text-green-700 cursor-pointer" title="Exporta Excel"/>
                 </div>
             </div>
-
-
         </div>
         <div class="py-1 space-y-4">
             <div class="flex w-10/12 space-x-3">

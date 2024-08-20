@@ -36,11 +36,6 @@ class CampaignStores extends Component
     public function storesXls() {
         $stores=CampaignStore::where('campaign_id',$this->campaign->id)->get();
         $today=Carbon::now()->format('d/m/Y');
-        // dd($peticiones);
         return Excel::download(new CampaignStoreExport($stores,$today), 'stores'.$this->campaign->id.'.xlsx');
-    // return Excel::download(new EtiquetasPresupuestosExport($lux,$sto,$nam,$coun,$are,$segmen,$cha,$clu,$conce,$fur),'stores.xlsx');
     }
-
-
-
 }

@@ -9,6 +9,11 @@
             @if($campaign->id)
             @include('campaign.acciones')
             @endif
+            <div class="w-8">
+                <div class="w-5 ml-2 ">
+                    <x-icon.xls-a id="xls" wire:click="elementosXls" class="w-6 text-green-700 cursor-pointer" title="Exporta Excel"/>
+                </div>
+            </div>
         </div>
     </div>
     <div class="py-1 space-y-4">

@@ -20,6 +20,7 @@ class CampaignStoresElementos extends Component
     public function render(){
         $stores=CampaignStore::query()
             ->with('elementos')
+            ->with('producto')
             ->whereHas('elementos')
             ->where('campaign_id',$this->campaign->id)
             ->paginate(7);

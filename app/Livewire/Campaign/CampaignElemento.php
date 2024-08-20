@@ -83,6 +83,4 @@ class CampaignElemento extends Component
         ]);
         $this->dispatch('notify', 'Elemento actualizado.');
     }
-
-
 }

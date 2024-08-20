@@ -1,18 +1,25 @@
 <div class="p-2 border rounded-md shadow-md">
     @can('campaign.edit')
-        <input type="file" id="file{{ $campelemento->id }}" class="sr-only" wire:model="imagenelemento" />
+        <input type="file" id="file{{ $campelemento->id }}" class="sr-only" wire:model="imagenelemento" wire:loading.attr="disabled" />
     @endcan
-    @if(file_exists( 'storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$campelemento->imagenelemento ))
+
+    @if(file_exists( $ruta ))
     <label for="file{{ $campelemento->id }}" class="cursor-pointer">
-        <img src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$campelemento->imagenelemento.'?'.time())}}" alt={{$campelemento->imagenelemento}} title={{$campelemento->imagenelemento}}
-        class="h-10 mx-auto"/>
+        <img src="{{asset($ruta.'?'.time())}}" alt={{$campelemento->imagenelemento}} title={{$campelemento->imagenelemento}}
+        class="{{ $altura }} mx-auto"/>
     </label>
     @else
     <label for="file{{ $campelemento->id }}" class="cursor-pointer">
         <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$campelemento->imagenelemento}} title={{$campelemento->imagenelemento}}
-        class="h-10 mx-auto"/>
+        class="{{ $altura }} mx-auto"/>
     </label>
     @endif
     @error('imagenelemento') <span class="text-red-500">{{ $message }} </span>@enderror
+        <!-- Spinner de carga -->
+        <div wire:loading.flex class="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-75">
+            <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Cargando...</span>
+            </div>
+        </div>
 </div>
 

@@ -4,6 +4,7 @@ namespace App\Livewire\Campaign;
 
 use App\Models\Campaign;
 use App\Models\CampaignElemento;
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Intervention\Image\Laravel\Facades\Image;
@@ -19,6 +20,8 @@ class CampaignGaleria extends Component
     public $campaign;
     public $imagenelemento;
     public $ruta;
+    public $altura;
+    public $isLoading = false;
 
     protected $rules = [
         'imagenelemento' => 'image|mimes:pdf,jpeg,png,jpg,gif,svg|max:12288',
@@ -36,9 +39,14 @@ class CampaignGaleria extends Component
     function mount(Campaign $campaign, CampaignElemento $elemento){
         $this->campaign=$campaign;
         $this->campelemento=$elemento;
-        // dd($elemento);
+        if(Route::currentRouteName()=='campaign.edit'){
+            $this->ruta='storage/galeria/'.$campaign->id.'/'.$elemento->imagenelemento;
+            $this->altura='40';
+        }else{
+            $this->ruta='storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->imagenelemento;
+            $this->altura='10';
+        }
     }
-
 
     public function render(){
         // dd('asd');
@@ -51,6 +59,8 @@ class CampaignGaleria extends Component
     }
 
     public function saveimg(){
+
+        $this->isLoading = true;
 
         // $campElem=CampaignElemento::find($this->campelemento->elementoId);
         // $tienda=CampaignTienda::find($this->campelemento->tienda_id);
@@ -99,6 +109,18 @@ class CampaignGaleria extends Component
 
             $mensaje="Actualizado";
             $this->dispatch('notify', $mensaje);
+            $this->isLoading = false;
         }
     }
+
+    public function cargar()
+    {
+        $this->isLoading = true;
+
+        // Simular una carga con un retraso
+        sleep(3); // Aquí puedes realizar la operación real, como una API call, consulta a BD, etc.
+
+        $this->isLoading = false;
+    }
+
 }

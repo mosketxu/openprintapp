@@ -25,12 +25,15 @@
                 <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Idioma') }}</x-label> </div>
                 <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Producto') }}</x-label> </div>
                 <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Precio') }}</x-label> </div>
+                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Imagen') }}</x-label> </div>
             </div>
 
             @forelse ($stores as $store)
             <div class="w-full ml-2 text-base hover:bg-red-100 ">{{ $store->store  }}
                 @forelse($store->elementos as $elemento)
-                <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-blue-100 hover:cursor-pointer" wire:loading.class.delay="opacity-50" >
+                <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-blue-100 hover:cursor-pointer"
+                    onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'"
+                    wire:loading.class.delay="opacity-50" >
                     <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $elemento->imagen }}" readonly/></div>
                     <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $elemento->campo1 }}" readonly/></div>
                     <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $elemento->campo2 }}" readonly/></div>
@@ -42,8 +45,21 @@
                     <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $elemento->material }}" readonly/></div>
                     <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $elemento->medida }}" readonly/></div>
                     <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $elemento->idioma }}" readonly/></div>
-                    <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="lista de productos" readonly/></div>
-                    <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="precio" readonly/></div>
+                    <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $elemento->producto->descripcion ?? '-' }}" readonly/></div>
+                    <div class="w-1/12 pr-2 "><x-inputbluetransparent type="text"  class="" value="{{ $elemento->preciocoste_ud }}" readonly/></div>
+                    <div class="w-1/12 pr-2 ">
+                        @if(file_exists( 'storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->imagenelemento ))
+                            <label for="file{{ $elemento->id }}" >
+                                <img src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->imagenelemento.'?'.time())}}" alt={{$elemento->imagenelemento}} title={{$elemento->imagenelemento}}
+                                class="h-10 mx-auto"/>
+                            </label>
+                        @else
+                            <label for="file{{ $elemento->id }}" >
+                                <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$elemento->imagenelemento}} title={{$elemento->imagenelemento}}
+                                class="h-10 mx-auto"/>
+                            </label>
+                        @endif
+                    </div>
                 </div>
                 @empty
                 <div class="flex items-center justify-center">

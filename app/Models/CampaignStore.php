@@ -19,6 +19,15 @@ class CampaignStore extends Model
     }
     public function campaignStoreElementos(){return $this->hasMany(CampaignStoreElemento::class);}
 
-
+    function producto(){
+        return $this->hasManyThrough(
+            Producto::class,   // Modelo final al que se quiere acceder
+            CampaignStoreElemento::class,   // Modelo intermedio
+            'campaign_store_id',        // Clave foránea en la tabla intermedia (elementos) hacia la tabla principal (stores)
+            'id',              // Clave foránea en la tabla final (productos) que se refiere a la tabla intermedia (elementos)
+            'id',              // Clave primaria local en la tabla principal (stores)
+            'campaign_elemento_id'      // Clave foránea local en la tabla intermedia (elementos) que se refiere a la tabla final (productos)
+        );
+    }
 
 }
