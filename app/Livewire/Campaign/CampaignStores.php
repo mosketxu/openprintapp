@@ -6,6 +6,10 @@ use App\Models\Campaign;
 use App\Models\CampaignStore;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Exports\CampaignStoreExport;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class CampaignStores extends Component
 {
@@ -28,4 +32,15 @@ class CampaignStores extends Component
 
         return view('livewire.campaign.campaign-stores', compact('stores'));
     }
+
+    public function storesXls() {
+        $stores=CampaignStore::where('campaign_id',$this->campaign->id)->get();
+        $today=Carbon::now()->format('d/m/Y');
+        // dd($peticiones);
+        return Excel::download(new CampaignStoreExport($stores,$today), 'stores'.$this->campaign->id.'.xlsx');
+    // return Excel::download(new EtiquetasPresupuestosExport($lux,$sto,$nam,$coun,$are,$segmen,$cha,$clu,$conce,$fur),'stores.xlsx');
+    }
+
+
+
 }
