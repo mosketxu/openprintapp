@@ -2,48 +2,109 @@
     <div class="p-1 mx-2">
         <div class="flex p-1 mx-2">
             <div class="">
-                <h1 class="text-2xl font-semibold text-gray-900">Elementos de la Campaña {{ $campaign->name }}</h1>
+                <h1 class="text-2xl font-semibold text-gray-900">Resumen de Elementos</h1>
                 <h2 class="text-xl font-semibold text-gray-900">Campaña: {{ $campaign->name }}</h2>
                 <h2 class="text-lg font-semibold text-gray-900">Cliente: {{ $campaign->entidad->entidad }}</h2>
             </div>
             @if($campaign->id)
-            @include('campaign.acciones')
+                @include('campaign.acciones')
             @endif
         </div>
-        <div class="py-1 space-y-4">
+        <div class="py-1 space-y-1">
             <div class="">
                 @include('error')
             </div>
             <div class="flex w-full py-2 pl-2 text-sm text-gray-500 bg-blue-100 rounded-t-md">
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Imagen') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Campo1') }}</x-label> </div>
+                @if($bcampo0==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Imagen') }}</x-label> </div>
+                @endif
+                @if($bcampo1==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Campo1') }}</x-label> </div>
+                @endif
+                @if($bcampo2==true)
                 <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Campo2') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Campo3') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Campo4') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Campo5') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Categoria') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Archivo') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Material') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Medida') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Idioma') }}</x-label> </div>
+                @endif
+                @if($bcampo3==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Campo3') }}</x-label> </div>
+                @endif
+                @if($bcampo4==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Campo4') }}</x-label> </div>
+                    @endif
+                @if($bcampo5==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Campo5') }}</x-label> </div>
+                    @endif
+                @if($bcampo6==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Categoria') }}</x-label> </div>
+                    @endif
+                @if($bcampo7==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Archivo') }}</x-label> </div>
+                @endif
+                @if($bcampo8==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Material') }}</x-label> </div>
+                @endif
+                @if($bcampo9==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Medida') }}</x-label> </div>
+                @endif
+                @if($bcampo10==true)
+                    <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Idioma') }}</x-label> </div>
+                @endif
                 <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Producto') }}</x-label> </div>
-                <div class="w-1/12 pl-2 font-light " ><x-label>{{ __('Cantidad') }}</x-label> </div>
+                <div class="w-1/12 pl-2 font-light " ><x-label class="text-right">{{ __('€.Ud') }}</x-label> </div>
+                <div class="w-1/12 pl-2 font-light " ><x-label class="text-right">{{ __('Cantidad') }}</x-label> </div>
+                <div class="w-1/12 pl-2 font-light " ><x-label class="text-right">{{ __('Total') }}</x-label> </div>
             </div>
             @forelse($elementos as $elemento)
             <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-blue-100 hover:cursor-pointer" wire:loading.class.delay="opacity-50" >
+                @if($bcampo0==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->imagen }}" readonly/></div>
+                @endif
+                @if($bcampo1==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->campo1 }}" readonly/></div>
+                @endif
+                @if($bcampo2==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->campo2 }}" readonly/></div>
+                @endif
+                @if($bcampo3==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->campo3 }}" readonly/></div>
+                @endif
+                @if($bcampo4==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->campo4 }}" readonly/></div>
+                @endif
+                @if($bcampo5==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->campo5 }}" readonly/></div>
+                @endif
+                @if($bcampo6==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->categoria }}" readonly/></div>
+                @endif
+                @if($bcampo7==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->archivo }}" readonly/></div>
+                @endif
+                @if($bcampo8==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->material }}" readonly/></div>
+                @endif
+                @if($bcampo9==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->medida }}" readonly/></div>
-                <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->idioma }}" readonly/></div>
-                <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="lista de productos" readonly/></div>
-                <div class="w-1/12 "><x-inputbluetransparent   class="" value="{{ $elemento->total }}" readonly/></div>
+                @endif
+                @if($bcampo10==true)
+                    <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->idioma }}" readonly/></div>
+                @endif
+                <div class="w-1/12"><x-inputbluetransparent   class="" value="{{ $elemento->descripcion }}" readonly/></div>
+                <div class="w-1/12 text-right "><x-inputbluetransparent   class="text-right " value="{{ $elemento->preciocoste_ud }}" readonly/></div>
+                <div class="w-1/12 text-right"><x-inputbluetransparent   class="text-right " value="{{ $elemento->cantidadtotal }}" readonly/></div>
+                <div class="w-1/12 text-right"><x-inputbluetransparent   class="text-right " value="{{ round($elemento->cantidadtotal * $elemento->preciocoste_ud,2)}}" readonly/></div>
+                <div class="w-1/12 pl-2 font-light" >
+                    @if(file_exists( 'storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->imagenelemento ))
+                    <label class="cursor-pointer">
+                        <img src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->imagenelemento.'?'.time())}}" alt={{$elemento->imagenelemento}} title={{$elemento->imagenelemento}}
+                        class="h-10 mx-auto"/>
+                    </label>
+                    @else
+                    <label class="cursor-pointer">
+                        <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$elemento->imagenelemento}} title={{$elemento->imagenelemento}}
+                        class="h-10 mx-auto"/>
+                    </label>
+                    @endif
+                                </div>
             </div>
             @empty
                 <div class="flex items-center justify-center">

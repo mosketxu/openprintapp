@@ -1,4 +1,4 @@
-<div class="flex ml-10 space-x-2">
+<div class="flex ml-10 space-x-2 print:hidden">
     @can('campaign.index')
     <div class="w-8">
         <div class="w-6 ml-2 ">
@@ -50,6 +50,11 @@
     <div class="items-center w-8 h-8">
         <div class="w-5 ml-2 ">
             <x-icon.tags-a href="{{route('campaign.etiquetaspdf',$campaign) }}" class="w-5 text-fuchsia-600" title="Etiquetas PDF"/>
+        </div>
+    </div>
+    <div class="items-center w-8 h-8">
+        <div class="w-5 ml-2 ">
+            <x-icon.print-a onclick="window.print()"  class="w-5 text-amber-800" title="Imprimir"/>
         </div>
     </div>
     @if(Route::currentRouteName()=='campaign.edit')

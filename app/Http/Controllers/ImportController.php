@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Imports\DynamicImport;
 use App\Models\Campaign;
-use App\Models\CampaignElemento;
 use App\Models\CampaignStore;
 use App\Models\CampaignStoreElemento;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use PDOException;

@@ -141,10 +141,10 @@
                                                 {{ $elemento->campaignElemento->idioma }} </br>
                                             </div>
                                             @endif
-                                            @if($campaign->cabecera->bproducto==true)
+                                            @if($campaign->cabecera->bproducto==true && $elemento->campaignElemento->producto->descripcion!='-' )
                                             <div class="">
                                                 <span style="font-weight:bold">{{ $campaign->cabecera->producto_id }}:</span>
-                                                {{ $elemento->campaignElemento->producto_id }} </br>
+                                                {{ $elemento->campaignElemento->producto->descripcion }} </br>
                                             </div>
                                             @endif
                                             @if($campaign->cabecera->bpreciocoste==true)

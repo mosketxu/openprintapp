@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
-use App\Http\Requests\StoreCampaignRequest;
-use App\Http\Requests\UpdateCampaignRequest;
 use App\Models\CampaignStore;
 use Illuminate\Support\Carbon;
-use Barryvdh\DomPDF\PDF;
 
 class CampaignController extends Controller
 {
