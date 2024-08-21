@@ -23,86 +23,124 @@
         <div class="overflow-x-auto">
             <div class="">
                 <div class="flex items-center text-xs text-gray-500 bg-blue-100 rounded-t-md">
-                    @if($cabecera->bcampo0==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo0 }}" readonly/></div>
+                    @if($bcampo0==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo0' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo0" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo1==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo1 }}" readonly/></div>
+                    @if($bcampo1==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo1' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo1" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo2==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo2 }}" readonly/></div>
+                    @if($bcampo2==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo2' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo2" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo3==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo3 }}" readonly/></div>
+                    @if($bcampo3==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo3' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo3" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo4==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo4 }}" readonly/></div>
+                    @if($bcampo4==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo4' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo4" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo5==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo5 }}" readonly/></div>
+                    @if($bcampo5==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo5' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo5" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo6==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo6 }}" readonly/></div>
+                    @if($bcampo6==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo6' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo6" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo7==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo7 }}" readonly/></div>
+                    @if($bcampo7==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo7' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo7" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo8==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo8 }}" readonly/></div>
+                    @if($bcampo8==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo8' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo8" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo9==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo9 }}" readonly/></div>
+                    @if($bcampo9==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo9' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo9" />
+                    </div>
                     @endif
-                    @if($cabecera->bcampo10==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $cabecera->campo10 }}" readonly/></div>
+                    @if($bcampo10==true)
+                    <div class="w-1/12 pl-2 font-light" >
+                        <x-inputbluetransparent type="text"  class="" wire:model='campo10' />
+                        <x-checkbox class="mx-auto"  wire:model="bcampo10" />
+                    </div>
                     @endif
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="Producto" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ __('Producto') }}" readonly/></div>
                     <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ __('Updated_at') }}" readonly/></div>
                     <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ __('Imagen') }}" readonly/></div>
+                    @can('campaign.create')
+                    <div class="w-10 pr-2 font-light" ><x-icon.save-a wire:click="saveCabecera" class="w-5 text-blue-500" title="guardar"/></div>
+                    @endcan
                 </div>
                 @forelse ($elementos as $elemento)
-                <div class="flex items-center text-xs text-gray-500 border-t-0 border-y hover:bg-gray-100 hover:cursor-pointer"
+                <div class="flex items-center text-gray-500 border-t-0 border-y hover:bg-gray-100 hover:cursor-pointer"
                     onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'"
                     wire:loading.class.delay="opacity-50" >
-                    @if($cabecera->bcampo0==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->imagen }}" readonly/></div>
+                    @if($bcampo0==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->imagen }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo1==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->campo1 }}" readonly/></div>
+                    @if($bcampo1==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo1 }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo2==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->campo2 }}" readonly/></div>
+                    @if($bcampo2==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo2 }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo3==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->campo3 }}" readonly/></div>
+                    @if($bcampo3==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo3 }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo4==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->campo4 }}" readonly/></div>
+                    @if($bcampo4==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo4 }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo5==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->campo5 }}" readonly/></div>
+                    @if($bcampo5==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo5 }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo6==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->categoria }}" readonly/></div>
+                    @if($bcampo6==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->categoria }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo7==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->archivo }}" readonly/></div>
+                    @if($bcampo7==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->archivo }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo8==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->material }}" readonly/></div>
+                    @if($bcampo8==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->material }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo9==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->medida }}" readonly/></div>
+                    @if($bcampo9==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->medida }}" readonly/></div>
                     @endif
-                    @if($cabecera->bcampo10==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->idioma }}" readonly/></div>
-                        {{ $elemento->id }}
+                    @if($bcampo10==true)
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->idioma }}" readonly/></div>
                     @endif
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->producto->descripcion }}" readonly/></div>
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="" value="{{ $elemento->updated_at }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->producto->descripcion }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->updated_at }}" readonly/></div>
                     <div class="w-1/12 pl-2 font-light" >
                         @livewire('campaign.campaign-galeria',['campaign'=>$campaign,'elemento'=>$elemento,key($elemento->id)])
                     </div>
+                    @can('campaign.create')
+                    <div class="w-10 pr-2 font-light" ></div>
+                    @endcan
                 </div>
                 @empty
                 <div colspan="10">

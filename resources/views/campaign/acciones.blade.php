@@ -53,12 +53,12 @@
         </div>
     </div>
     @if(Route::currentRouteName()=='campaign.edit')
-    @can('campaign.delete')
-    <div class="items-center w-8 h-8">
-        <div class="w-5 ml-auto ">
-            <x-icon.trash-a wire:click.prevent="delete({{ $campaign->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()"  class="w-5 text-red-500" title="Eliminar"/>
+        @can('campaign.delete')
+        <div class="items-center w-8 h-8">
+            <div class="w-5 ml-auto ">
+                <x-icon.trash-a wire:click.prevent="delete({{ $campaign->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()"  class="w-5 text-red-500" title="Eliminar"/>
             </div>
         </div>
-    @endcan
+        @endcan
     @endif
 </div>
