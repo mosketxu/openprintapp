@@ -30,7 +30,7 @@ class CampaignStoreExport implements FromCollection,WithHeadings
             'Teléfono',
             'Idioma',
             'Created_at',
-            'Updated_at.',
+            'Updated_at',
         ];
     }
 

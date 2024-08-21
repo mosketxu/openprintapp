@@ -2,10 +2,13 @@
 
 namespace App\Livewire\Campaign;
 
+use App\Exports\CampaignElementosQExport;
 use App\Models\Campaign;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use App\Models\CampaignCabecera;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CampaignElementosQ extends Component
 {
@@ -81,7 +84,56 @@ class CampaignElementosQ extends Component
 
     public function render(){
         $elementos = DB::table('campaign_store_elementos')
+            ->select(
+                'campaign_elementos.imagen',
+                'campaign_elementos.campo1',
+                'campaign_elementos.campo2',
+                'campaign_elementos.campo3',
+                'campaign_elementos.campo4',
+                'campaign_elementos.campo5',
+                'campaign_elementos.categoria',
+                'campaign_elementos.archivo',
+                'campaign_elementos.material',
+                'campaign_elementos.medida',
+                'campaign_elementos.idioma',
+                'campaign_elementos.elementificador',
+                'campaign_elementos.preciocoste_ud',
+                'campaign_elementos.imagenelemento',
+                'productos.descripcion',
+                DB::raw('SUM(campaign_store_elementos.cantidad) as cantidadtotal'))
+            ->join('campaign_elementos', 'campaign_store_elementos.campaign_elemento_id', '=', 'campaign_elementos.id')
+            ->leftJoin('productos', 'productos.id', '=', 'campaign_elementos.producto_id')
+            ->where('campaign_store_elementos.campaign_id', $this->campaign->id)
+            ->groupBy(
+                'campaign_elementos.imagen',
+                'campaign_elementos.campo1',
+                'campaign_elementos.campo2',
+                'campaign_elementos.campo3',
+                'campaign_elementos.campo4',
+                'campaign_elementos.campo5',
+                'campaign_elementos.categoria',
+                'campaign_elementos.archivo',
+                'campaign_elementos.material',
+                'campaign_elementos.medida',
+                'campaign_elementos.idioma',
+                'campaign_elementos.elementificador',
+                'campaign_elementos.preciocoste_ud',
+                'campaign_elementos.imagenelemento',
+                'productos.descripcion',
+                )
+            ->get();
+
+
+            return view('livewire.campaign.campaign-elementos-q',compact('elementos'));
+
+        }
+
+    public function resumenelementosXls() {
+
+        $elementos = DB::table('campaign_store_elementos')
         ->select(
+            'campaigns.name',
+            'campaign_stores.store',
             'campaign_elementos.imagen',
             'campaign_elementos.campo1',
             'campaign_elementos.campo2',
@@ -94,14 +146,17 @@ class CampaignElementosQ extends Component
             'campaign_elementos.medida',
             'campaign_elementos.idioma',
             'campaign_elementos.elementificador',
-            'campaign_elementos.preciocoste_ud',
-            'campaign_elementos.imagenelemento',
             'productos.descripcion',
+            'campaign_elementos.preciocoste_ud',
             DB::raw('SUM(campaign_store_elementos.cantidad) as cantidadtotal'))
+        ->join('campaign_stores', 'campaign_stores.id', '=', 'campaign_store_elementos.campaign_store_id')
         ->join('campaign_elementos', 'campaign_store_elementos.campaign_elemento_id', '=', 'campaign_elementos.id')
+        ->join('campaigns', 'campaign_store_elementos.campaign_id', '=', 'campaigns.id')
         ->leftJoin('productos', 'productos.id', '=', 'campaign_elementos.producto_id')
         ->where('campaign_store_elementos.campaign_id', $this->campaign->id)
         ->groupBy(
+            'campaigns.name',
+            'campaign_stores.store',
             'campaign_elementos.imagen',
             'campaign_elementos.campo1',
             'campaign_elementos.campo2',
@@ -120,9 +175,9 @@ class CampaignElementosQ extends Component
             )
         ->get();
 
-        // dd($elementos);
-        return view('livewire.campaign.campaign-elementos-q',compact('elementos'));
-    }
+        $today=Carbon::now()->format('d/m/Y');
+        return Excel::download(new CampaignElementosQExport($elementos,$today), 'elementos'.$this->campaign->id.'.xlsx');
 
+    }
 
 }

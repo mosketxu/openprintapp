@@ -37,7 +37,7 @@ class CampaignElementoExport implements FromCollection,WithHeadings
             'preciocoste_ud',
             'imagenelemento',
             'created_at',
-            'updated_at.',
+            'updated_at',
         ];
     }
 
@@ -46,5 +46,6 @@ class CampaignElementoExport implements FromCollection,WithHeadings
     */
     public function collection()
     {
-        return $this->elementos;    }
+        return $this->elementos;
+    }
 }
