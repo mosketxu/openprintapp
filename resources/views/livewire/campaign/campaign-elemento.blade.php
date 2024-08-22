@@ -144,7 +144,7 @@
                                 <x-inputbluetransparent  value="{{ $cabecera->producto_id }}" disabled />
                             </div>
                             <div class="w-10/12">
-                                <select wire:model="producto_id" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                <select wire:model.lazy="producto_id" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                     <option value="">--Selecciona producto--</option>
                                     @foreach ($productos as $producto)
                                     <option value="{{ $producto->id }}">{{ $producto->descripcion }}</option>
@@ -177,7 +177,9 @@
                             </div>
                         </x-buttoncolor>
                         @endcan
-                        <x-secondary-button  onclick="location.href = '{{route('campaign.edit',$campaign)}}'">{{ __('Volver') }}</x-secondary-button>
+                        {{-- <x-secondary-button  onclick="location.href = '{{route('campaign.edit',$campaign)}}'">{{ __('Volver') }}</x-secondary-button> --}}
+                        <x-secondary-button  onclick="history.back()">{{ __('Volver') }}</x-secondary-button>
+
                     </div>
                 </div>
             </form>

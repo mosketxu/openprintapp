@@ -26,7 +26,9 @@
                         <label>Selecciona el fichero</label>
                         <input type="file" class="form-control form-control-sm" id="fichero" name="fichero" value=""/>
                     </div>
-                    <x-buttoncolor type="submit" color='green' class="mt-10 w-80">{{ __('Subir Fichero') }}</x-buttoncolor>
+                    <div class="m-2 form-group">
+                        <x-buttoncolor type="submit" color='green' class="mt-10 w-80">{{ __('Subir Fichero') }}</x-buttoncolor>
+                    </div>
                 </form>
             </div>
             @else
@@ -77,6 +79,7 @@
         </div>
     </div>
     <div class="mx-4 my-2">
-        <x-secondary-button  onclick="location.href = '{{ route('campaign.edit',$campaign) }}'">{{ __('Volver') }}</x-secondary-button>
+        {{-- <x-secondary-button  onclick="location.href = '{{ route('campaign.edit',$campaign) }}'">{{ __('Volver') }}</x-secondary-button> --}}
+        <x-secondary-button  onclick="history.back()">{{ __('Volver') }}</x-secondary-button>
     </div>
 </div>

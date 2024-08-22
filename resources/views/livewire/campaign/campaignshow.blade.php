@@ -94,7 +94,8 @@
                 </div>
                 <div class="flex mt-2 mb-2 ml-2 space-x-4">
                     <div class="space-x-3">
-                        <x-secondary-button  onclick="location.href = '{{route('campaign.index')}}'">{{ __('Volver') }}</x-secondary-button>
+                        {{-- <x-secondary-button  onclick="location.href = '{{route('campaign.index')}}'">{{ __('Volver') }}</x-secondary-button> --}}
+                        <x-secondary-button  onclick="history.back()">{{ __('Volver') }}</x-secondary-button>
                     </div>
                 </div>
             </form>

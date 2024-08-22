@@ -9,6 +9,11 @@
             @if($campaign->id)
                 @include('campaign.acciones')
             @endif
+            <div class="items-center w-8 h-8">
+                <div class="w-5 ml-2 ">
+                    <x-icon.print-a onclick="window.print()"  class="w-5 text-amber-800" title="Imprimir"/>
+                </div>
+            </div>
             <div class="w-8">
                 <div class="w-5 ml-2 ">
                     <x-icon.xls-a id="xls" wire:click="resumenelementosXls" class="w-6 text-green-700 cursor-pointer" title="Exporta Excel"/>

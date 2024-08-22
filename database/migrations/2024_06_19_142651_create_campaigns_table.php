@@ -27,6 +27,8 @@ return new class extends Migration
             $table->integer('estadoproceso')->default('0');
             $table->integer('numcolumnas')->default('0');
             $table->integer('filacod')->default('0');
+            $table->string('fichero')->nullable();
+            $table->datetime('fechafichero')->after('fichero')->nullable();
             $table->timestamps();
         });
     }

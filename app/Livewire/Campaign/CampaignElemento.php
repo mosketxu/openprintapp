@@ -52,12 +52,18 @@ class CampaignElemento extends Component
         $this->updated_at=$campaignElemento->updated_at;
     }
 
-    public function render()
-    {
+    public function render(){
+
         $productos=Producto::orderBy('descripcion')->get();
         $cabecera=CampaignCabecera::where('campaign_id',$this->campaign->id)->first();
         return view('livewire.campaign.campaign-elemento',compact('cabecera','productos'));
     }
+
+    public function updatedProductoId(){
+        $this->preciocoste_ud=Producto::find($this->producto_id)->costereal;
+        // dd($this->producto_id);
+    }
+
 
     public function save(){
         // $this->validate();

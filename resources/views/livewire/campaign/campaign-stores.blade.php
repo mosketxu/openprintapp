@@ -67,7 +67,9 @@
                 {{ $stores->links() }}
             </div>
             <div class="m-3">
-                <x-secondary-button  onclick="location.href = '{{ route('import.index',$campaign) }}'">{{ __('Volver') }}</x-secondary-button>
+                {{-- <x-secondary-button  onclick="location.href = '{{ route('import.index',$campaign) }}'">{{ __('Volver') }}</x-secondary-button> --}}
+                <x-secondary-button  onclick="history.back()">{{ __('Volver') }}</x-secondary-button>
+
             </div>
         </div>
     </div>

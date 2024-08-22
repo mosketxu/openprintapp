@@ -13,83 +13,173 @@
             </div>
         </div>
         <div class="items-center w-full pl-2 my-1 text-sm text-gray-500 bg-blue-100 rounded-t-md">
-            <div class="flex space-x-2">
-                <x-input class="bg-transparent border-0 shadow-none" value="{{ __('C.Original') }}" disabled />
-                <x-input class="bg-transparent border-0 shadow-none" value="{{ __('C.Nueva') }}" disabled />
-                <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Visible') }}" disabled />
+            <div class="flex space-x-2 ">
+                <div class="w-2/12">
+                    <x-inputbluetransparent class="" value="{{ __('C.Original') }}" disabled />
+                </div>
+                <div class="w-2/12">
+                    <x-inputbluetransparent class="" value="{{ __('C.Nueva') }}" disabled />
+                </div>
+                <div class="w-1/12">
+                    <x-inputbluetransparent class="" value="{{ __('Visible') }}" disabled />
+                </div>
             </div>
         </div>
         <form wire:submit.prevent="save">
             <div class="items-center w-full my-1 space-y-1 text-sm text-gray-500 rounded-t-md">
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Imagen') }}" disabled />
-                    <x-input class="" wire:model="campo0" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo0" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Imagen') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo0" />
+                    </div>
+                    <div class="w-1/12 ">
+                        <x-checkboxtransparent class="mt-1 ml-8"  wire:model="bcampo0" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Campo1') }}" disabled />
-                    <x-input class="" wire:model="campo1" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo1" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Campo1') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo1" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo1" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Campo2') }}" disabled />
-                    <x-input class="" wire:model="campo2" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo2" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Campo2') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo2" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo2" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Campo3') }}" disabled />
-                    <x-input class="" wire:model="campo3" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo3" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Campo3') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo3" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo3" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Campo4') }}" disabled />
-                    <x-input class="" wire:model="campo4" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo4" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Campo4') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo4" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo4" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Campo5') }}" disabled />
-                    <x-input class="" wire:model="campo5" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo5" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Campo5') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo5" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo5" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Categoria') }}" disabled />
-                    <x-input class="" wire:model="campo6" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo6" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Categoria') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo6" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo6" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Archivo') }}" disabled />
-                    <x-input class="" wire:model="campo7" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo7" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Archivo') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo7" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo7" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Material') }}" disabled />
-                    <x-input class="" wire:model="campo8" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo8" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Material') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo8" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo8" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Medida') }}" disabled />
-                    <x-input class="" wire:model="campo9" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo9" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Medida') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo9" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo9" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Idioma') }}" disabled />
-                    <x-input class="" wire:model="campo10" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bcampo10" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Idioma') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="campo10" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bcampo10" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Producto') }}" disabled />
-                    <x-input class="" wire:model="producto_id" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bproducto" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Producto') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="producto_id" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bproducto" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('P.Coste') }}" disabled />
-                    <x-input class="" wire:model="preciocoste_ud" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bpreciocoste" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('P.Coste') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="preciocoste_ud" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bpreciocoste" />
+                    </div>
                 </div>
-                <div class="flex space-x-2">
-                    <x-input class="bg-transparent border-0 shadow-none" value="{{ __('Imagen') }}" disabled />
-                    <x-input class="" wire:model="imagenelemento" />
-                    <x-checkbox class="mt-4 ml-8"  wire:model="bimagenelemento" />
+                <div class="flex space-x-2 hover:bg-gray-100">
+                    <div class="w-2/12">
+                        <x-inputbluetransparent class="" value="{{ __('Imagen') }}" disabled />
+                    </div>
+                    <div class="w-2/12">
+                        <x-input class="" wire:model="imagenelemento" />
+                    </div>
+                    <div class="w-1/12">
+                        <x-checkboxtransparent class="mt-2 ml-8"  wire:model="bimagenelemento" />
+                    </div>
                 </div>
             </div>
             <div class="flex mt-2 mb-2 ml-2 space-x-4">
@@ -105,7 +195,9 @@
                         </div>
                     </x-buttoncolor>
                     @endcan
-                    <x-secondary-button  onclick="location.href = '{{route('campaign.edit',$campaign)}}'">{{ __('Volver') }}</x-secondary-button>
+                    {{-- <x-secondary-button  onclick="location.href = '{{route('campaign.edit',$campaign)}}'">{{ __('Volver') }}</x-secondary-button> --}}
+                    <x-secondary-button  onclick="history.back()">{{ __('Volver') }}</x-secondary-button>
+
                 </div>
             </div>
         </form>

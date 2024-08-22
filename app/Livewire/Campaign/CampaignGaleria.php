@@ -110,6 +110,8 @@ class CampaignGaleria extends Component
             $mensaje="Actualizado";
             $this->dispatch('notify', $mensaje);
             $this->isLoading = false;
+            $this->dispatch('$refresh');
+
         }
     }
 

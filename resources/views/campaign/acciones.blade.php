@@ -52,11 +52,11 @@
             <x-icon.tags-a href="{{route('campaign.etiquetaspdf',$campaign) }}" class="w-5 text-fuchsia-600" title="Etiquetas PDF"/>
         </div>
     </div>
-    <div class="items-center w-8 h-8">
+    {{-- <div class="items-center w-8 h-8">
         <div class="w-5 ml-2 ">
             <x-icon.print-a onclick="window.print()"  class="w-5 text-amber-800" title="Imprimir"/>
         </div>
-    </div>
+    </div> --}}
     @if(Route::currentRouteName()=='campaign.edit')
         @can('campaign.delete')
         <div class="items-center w-8 h-8">

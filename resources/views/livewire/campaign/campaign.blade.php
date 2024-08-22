@@ -118,7 +118,9 @@
                             </div>
                         </x-buttoncolor>
                         @endcan
-                        <x-secondary-button  onclick="location.href = '{{route('campaign.index')}}'">{{ __('Volver') }}</x-secondary-button>
+                        {{-- <x-secondary-button  onclick="location.href = '{{route('campaign.index')}}'">{{ __('Volver') }}</x-secondary-button> --}}
+                        <x-secondary-button  onclick="history.back()">{{ __('Volver') }}</x-secondary-button>
+
                     </div>
                 </div>
             </form>

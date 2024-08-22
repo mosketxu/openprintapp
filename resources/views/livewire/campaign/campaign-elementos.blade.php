@@ -98,43 +98,42 @@
                 </div>
                 @forelse ($elementos as $elemento)
                 <div class="flex items-center text-gray-500 border-t-0 border-y hover:bg-gray-100 hover:cursor-pointer"
-                    onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'"
                     wire:loading.class.delay="opacity-50" >
                     @if($bcampo0==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->imagen }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->imagen }}" readonly/></div>
                     @endif
                     @if($bcampo1==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo1 }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo1 }}" readonly/></div>
                     @endif
                     @if($bcampo2==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo2 }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo2 }}" readonly/></div>
                     @endif
                     @if($bcampo3==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo3 }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo3 }}" readonly/></div>
                     @endif
                     @if($bcampo4==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo4 }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo4 }}" readonly/></div>
                     @endif
                     @if($bcampo5==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo5 }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->campo5 }}" readonly/></div>
                     @endif
                     @if($bcampo6==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->categoria }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->categoria }}" readonly/></div>
                     @endif
                     @if($bcampo7==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->archivo }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->archivo }}" readonly/></div>
                     @endif
                     @if($bcampo8==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->material }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->material }}" readonly/></div>
                     @endif
                     @if($bcampo9==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->medida }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->medida }}" readonly/></div>
                     @endif
                     @if($bcampo10==true)
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->idioma }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->idioma }}" readonly/></div>
                     @endif
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->producto->descripcion }}" readonly/></div>
-                    <div class="w-1/12 pl-2 font-light" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->updated_at }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->producto->descripcion }}" readonly/></div>
+                    <div class="w-1/12 pl-2 font-light" onclick="location.href = '{{ route('campaignelemento.edit',$elemento) }}'" ><x-inputbluetransparent type="text"  class="text-xs" value="{{ $elemento->updated_at }}" readonly/></div>
                     <div class="w-1/12 pl-2 font-light" >
                         @livewire('campaign.campaign-galeria',['campaign'=>$campaign,'elemento'=>$elemento,key($elemento->id)])
                     </div>
@@ -156,7 +155,9 @@
             </div>
         </div>
         <div class="m-3">
-            <x-secondary-button  onclick="location.href = '{{ route('import.index',$campaign) }}'">{{ __('Volver') }}</x-secondary-button>
+            {{-- <x-secondary-button  onclick="location.href = '{{ route('import.index',$campaign) }}'">{{ __('Volver') }}</x-secondary-button> --}}
+            <x-secondary-button  onclick="history.back()">{{ __('Volver') }}</x-secondary-button>
+
         </div>
     </div>
 </div>
