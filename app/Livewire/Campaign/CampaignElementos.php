@@ -81,7 +81,7 @@ class CampaignElementos extends Component
         $this->bcampo9=$this->cabecera->bcampo9==1 ? true : false;
         $this->bcampo10=$this->cabecera->bcampo10==1 ? true : false;
         $this->bproducto=$this->cabecera->bproducto==1 ? true :false;
-        $this->bpreciocoste=$this->cabecera->bpreciocoste==1 ? false :true;
+        $this->bpreciocoste=$this->cabecera->bpreciocoste==1 ? true :false;
         $this->bimagenelemento=$this->cabecera->bimagenelemento==1 ? true :false;
 
     }

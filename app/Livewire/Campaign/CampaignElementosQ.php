@@ -48,8 +48,8 @@ class CampaignElementosQ extends Component
 
     function mount(Campaign $campaign){
         $this->campaign=$campaign;
-
         $this->cabecera=CampaignCabecera::where('campaign_id',$campaign->id)->first();
+
         $this->campo0=$campaign->cabecera->campo0;
         $this->campo1=$campaign->cabecera->campo1;
         $this->campo2=$campaign->cabecera->campo2;
@@ -77,7 +77,7 @@ class CampaignElementosQ extends Component
         $this->bcampo9=$this->cabecera->bcampo9==1 ? true : false;
         $this->bcampo10=$this->cabecera->bcampo10==1 ? true : false;
         $this->bproducto=$this->cabecera->bproducto==1 ? true :false;
-        $this->bpreciocoste=$this->cabecera->bpreciocoste==1 ? false :true;
+        $this->bpreciocoste=$this->cabecera->bpreciocoste==1 ? true :false;
         $this->bimagenelemento=$this->cabecera->bimagenelemento==1 ? true :false;
 
     }
@@ -122,62 +122,57 @@ class CampaignElementosQ extends Component
                 'productos.descripcion',
                 )
             ->get();
-
-
             return view('livewire.campaign.campaign-elementos-q',compact('elementos'));
-
         }
 
-    public function resumenelementosXls() {
+    public function resumenelementosXls($salida) {
 
-        $elementos = DB::table('campaign_store_elementos')
-        ->select(
+        // dd($salida);
+
+        $campos_fijos_inicio=['campaigns.name'];
+        $campos_fijos_final=[
+            DB::raw('SUM(campaign_store_elementos.cantidad) as cantidadtotal')
+        ];
+
+        // Iniciar la query con los campos fijos al inicio
+        $query = DB::table('campaign_store_elementos')
+            ->join('campaign_stores', 'campaign_stores.id', '=', 'campaign_store_elementos.campaign_store_id')
+            ->join('campaign_elementos', 'campaign_store_elementos.campaign_elemento_id', '=', 'campaign_elementos.id')
+            ->join('campaigns', 'campaign_store_elementos.campaign_id', '=', 'campaigns.id')
+            ->leftJoin('productos', 'productos.id', '=', 'campaign_elementos.producto_id')
+            ->where('campaign_store_elementos.campaign_id', $this->campaign->id)
+            ->select($campos_fijos_inicio);
+
+            // dd('es:'. $this->bcampo0);
+            // Agregar los campos condicionales
+        $query->when($salida == 'constore', function ($q) {$q->addSelect('campaign_stores.store')->groupBy('campaign_stores.store');});
+        $query->when($this->bcampo0 == '1', function ($q) {$q->addSelect('campaign_elementos.imagen')->groupBy('campaign_elementos.imagen');});
+        $query->when($this->bcampo1 == '1', function ($q) {$q->addSelect('campaign_elementos.campo1')->groupBy('campaign_elementos.campo1');});
+        $query->when($this->bcampo2 == '1', function ($q) {$q->addSelect('campaign_elementos.campo2')->groupBy('campaign_elementos.campo2');});
+        $query->when($this->bcampo3 == '1', function ($q) {$q->addSelect('campaign_elementos.campo3')->groupBy('campaign_elementos.campo3');});
+        $query->when($this->bcampo4 == '1', function ($q) {$q->addSelect('campaign_elementos.campo4')->groupBy('campaign_elementos.campo4');});
+        $query->when($this->bcampo5 == '1', function ($q) {$q->addSelect('campaign_elementos.campo5')->groupBy('campaign_elementos.campo5');});
+        $query->when($this->bcampo6 == '1', function ($q) {$q->addSelect('campaign_elementos.categoria')->groupBy('campaign_elementos.categoria');});
+        $query->when($this->bcampo7 == '1', function ($q) {$q->addSelect('campaign_elementos.archivo')->groupBy('campaign_elementos.archivo');});
+        $query->when($this->bcampo8 == '1', function ($q) {$q->addSelect('campaign_elementos.material')->groupBy('campaign_elementos.material');});
+        $query->when($this->bcampo9 == '1', function ($q) {$q->addSelect('campaign_elementos.medida')->groupBy('campaign_elementos.medida');});
+        $query->when($this->bcampo10 == '1', function ($q) {$q->addSelect('campaign_elementos.idioma')->groupBy('campaign_elementos.idioma');});
+        $query->when($this->bproducto == '1', function ($q) {$q->addSelect('productos.descripcion')->groupBy('productos.descripcion');});
+        $query->when($this->bpreciocoste == '1', function ($q) {$q->addSelect('campaign_elementos.preciocoste_ud')->groupBy('campaign_elementos.preciocoste_ud');});
+        $query->when($this->bimagenelemento == '1', function ($q) {$q->addSelect('campaign_elementos.imagenelemento')->groupBy('campaign_elementos.imagenelemento');});
+
+        // Agregar los campos fijos al final
+        $query->addSelect($campos_fijos_final);
+
+        // Añadir otros groupBy obligatorios
+        $query->groupBy(
             'campaigns.name',
-            'campaign_stores.store',
-            'campaign_elementos.imagen',
-            'campaign_elementos.campo1',
-            'campaign_elementos.campo2',
-            'campaign_elementos.campo3',
-            'campaign_elementos.campo4',
-            'campaign_elementos.campo5',
-            'campaign_elementos.categoria',
-            'campaign_elementos.archivo',
-            'campaign_elementos.material',
-            'campaign_elementos.medida',
-            'campaign_elementos.idioma',
-            'campaign_elementos.elementificador',
-            'productos.descripcion',
-            'campaign_elementos.preciocoste_ud',
-            DB::raw('SUM(campaign_store_elementos.cantidad) as cantidadtotal'))
-        ->join('campaign_stores', 'campaign_stores.id', '=', 'campaign_store_elementos.campaign_store_id')
-        ->join('campaign_elementos', 'campaign_store_elementos.campaign_elemento_id', '=', 'campaign_elementos.id')
-        ->join('campaigns', 'campaign_store_elementos.campaign_id', '=', 'campaigns.id')
-        ->leftJoin('productos', 'productos.id', '=', 'campaign_elementos.producto_id')
-        ->where('campaign_store_elementos.campaign_id', $this->campaign->id)
-        ->groupBy(
-            'campaigns.name',
-            'campaign_stores.store',
-            'campaign_elementos.imagen',
-            'campaign_elementos.campo1',
-            'campaign_elementos.campo2',
-            'campaign_elementos.campo3',
-            'campaign_elementos.campo4',
-            'campaign_elementos.campo5',
-            'campaign_elementos.categoria',
-            'campaign_elementos.archivo',
-            'campaign_elementos.material',
-            'campaign_elementos.medida',
-            'campaign_elementos.idioma',
-            'campaign_elementos.elementificador',
-            'campaign_elementos.preciocoste_ud',
-            'campaign_elementos.imagenelemento',
-            'productos.descripcion',
-            )
-        ->get();
+        );
+
+        $elementos=$query->get();
 
         $today=Carbon::now()->format('d/m/Y');
-        return Excel::download(new CampaignElementosQExport($elementos,$today), 'elementos'.$this->campaign->id.'.xlsx');
-
+        return Excel::download(new CampaignElementosQExport($elementos,$today,$salida,$this->cabecera), 'elementos'.$this->campaign->id.'.xlsx');
     }
 
 }
