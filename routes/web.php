@@ -25,7 +25,7 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
         else dd('analizar');
     })->name('dashboard');
 
-    // Campaigns
+    // Campaigns s
     Route::middleware('role_or_permission:campaign.index')->group(function () {
         Route::get('/campaign', [CampaignController::class, 'index'])->name('campaign.index');
         Route::get('/campaign/{campaign}/cabecera', [CampaignController::class, 'cabecera'])->name('campaign.cabecera');
