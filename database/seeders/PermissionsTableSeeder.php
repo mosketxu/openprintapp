@@ -61,25 +61,25 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name'=>'import.delete'])->syncRoles($admin, $grafitex);
 
         // // campaign store
-        // Permission::create(['name'=>'campaignstore.index'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignstore.create'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignstore.edit'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignstore.update'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignstore.delete'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstore.index'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstore.create'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstore.edit'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstore.update'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstore.delete'])->syncRoles($admin, $grafitex);
 
         // // campaign elemento
-        // Permission::create(['name'=>'campaignelemento.index'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignelemento.create'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignelemento.edit'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignelemento.update'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignelemento.delete'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignelemento.index'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignelemento.create'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignelemento.edit'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignelemento.update'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignelemento.delete'])->syncRoles($admin, $grafitex);
 
         // // campaign store elemento
-        // Permission::create(['name'=>'campaignstoreelemento.index'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignstoreelemento.create'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignstoreelemento.edit'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignstoreelemento.update'])->syncRoles($admin, $grafitex);
-        // Permission::create(['name'=>'campaignstoreelemento.delete'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstoreelemento.index'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstoreelemento.create'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstoreelemento.edit'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstoreelemento.update'])->syncRoles($admin, $grafitex);
+        Permission::create(['name'=>'campaignstoreelemento.delete'])->syncRoles($admin, $grafitex);
 
     }
 }

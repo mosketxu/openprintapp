@@ -71,7 +71,7 @@
                     @endif
                     @if($campaign->estadoproceso>2)
                     <div class=""><x-buttoncolor color='gray'  class="m-2 w-80" onclick="location.href = '{{ route('campaign.elementos',$campaign) }}'" >{{ __('Lista de elementos') }}</x-buttoncolor></div>
-                    <div class=""><x-buttoncolor color='orange'  class="m-2 w-80" onclick="location.href = '{{ route('campaign.storeelementos',$campaign) }}'" >{{ __('Detalle Pedido') }}</x-buttoncolor></div>
+                    <div class=""><x-buttoncolor color='orange'  class="m-2 w-80" onclick="location.href = '{{ route('campaign.storeelementos',$campaign) }}'" >{{ __('Elementos x Tienda') }}</x-buttoncolor></div>
                     @endif
                 </div>
                 @endif

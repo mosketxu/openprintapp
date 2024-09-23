@@ -16,7 +16,12 @@
             </div>
             <div class="w-8">
                 <div class="w-5 ml-2 ">
-                    <x-icon.xls-a id="xls" wire:click="resumenelementosXls" class="w-6 text-green-700 cursor-pointer" title="Exporta Excel"/>
+                    <x-icon.xls-a id="xls" wire:click="resumenelementosXls('sinstore')" class="w-6 text-green-700 cursor-pointer" title="Resumen Elementos"/>
+                </div>
+            </div>
+            <div class="w-8">
+                <div class="w-5 ml-2 ">
+                    <x-icon.xls-a id="xls" wire:click="resumenelementosXls('constore')" class="w-6 text-orange-700 cursor-pointer" title="Resumen Elementos por tienda"/>
                 </div>
             </div>
 
@@ -65,7 +70,7 @@
                 <div class="w-1/12 pl-2 font-light " ><x-label class="text-right">{{ __('Total') }}</x-label> </div>
             </div>
             @forelse($elementos as $elemento)
-            <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-blue-100 hover:cursor-pointer" wire:loading.class.delay="opacity-50" >
+            <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-blue-100 " wire:loading.class.delay="opacity-50" >
                 @if($bcampo0==true)
                 <div class="w-1/12 pr-2 "><x-inputbluetransparent   class="" value="{{ $elemento->imagen }}" readonly/></div>
                 @endif
