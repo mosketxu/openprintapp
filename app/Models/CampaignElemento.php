@@ -13,7 +13,7 @@ class CampaignElemento extends Model
 
     public function campaign(){return $this->belongsTo(Campaign::class,'campaign','id');}
     public function campaignStoreElementos(){return $this->hasMany(CampaignStoreElemento::class);}
-    public function producto(){return $this->belongsTo(producto::class)->withDefault(['descripcion'=>'-']);}
+    public function producto(){return $this->belongsTo(Producto::class)->withDefault(['descripcion'=>'-']);}
 
     public function stores(){
             return $this->belongsToMany(CampaignStore::class, 'campaign_store_elementos')
