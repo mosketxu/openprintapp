@@ -9,7 +9,6 @@ use Illuminate\Support\Carbon;
 class CampaignController extends Controller
 {
     public function index(){
-        dd('asdf');
         return view('campaign.index');
     }
 
