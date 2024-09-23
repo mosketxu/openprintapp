@@ -26,7 +26,7 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
     })->name('dashboard');
 
     // Campaigns
-    // Route::middleware('role_or_permission:campaign.index')->group(function () {
+    Route::middleware('role_or_permission:campaign.index')->group(function () {
         Route::get('/campaign', [CampaignController::class, 'index'])->name('campaign.index');
         Route::get('/campaign/{campaign}/cabecera', [CampaignController::class, 'cabecera'])->name('campaign.cabecera');
         Route::get('/campaign/{campaign}/edit', [CampaignController::class, 'edit'])->name('campaign.edit');
@@ -36,7 +36,7 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
         Route::get('/campaign/{campaign}/store/elementos', [CampaignController::class, 'storeselementos'])->name('campaign.storeelementos');
         Route::get('/campaign/{campaign}/elementos/q', [CampaignController::class, 'elementosQ'])->name('campaign.elementosQ');
         Route::get('/campaign/{campaign}/etiquetaspdf', [CampaignController::class, 'etiquetaspdf'])->name('campaign.etiquetaspdf');
-    // });
+    });
     Route::middleware('role_or_permission:campaign.create')->group(function () {
         Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');
     });
