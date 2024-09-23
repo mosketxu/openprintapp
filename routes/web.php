@@ -4,7 +4,6 @@ use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\CampaignElementoController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\TempTableController;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +17,10 @@ Route::middleware(['auth',config('jetstream.auth_session'),'verified',])->group(
         // dd(User::with('roles')->find('2'));
         // dd(Auth::user()->hasRole('Cliente'));
         // dd(Auth::user()->hasRole('Cliente'));
-        if (Auth::user()->hasRole('Admin')) {$u=User::all(); dd($u); return view('dashboard');}
-        elseif (Auth::user()->hasRole('Gestion'))  dd('analizar');
+        if (Auth::user()->hasRole('Admin')) return view('dashboard');
+        elseif (Auth::user()->hasRole('Gestion'))  return view('dashboard');
         elseif (Auth::user()->hasRole('Cliente'))return redirect()->route('campaign.index');
-        elseif (Auth::user()->hasRole('Comercial')) dd('analizar');
+        elseif (Auth::user()->hasRole('Comercial')) return view('dashboard');
         elseif (Auth::user()->hasRole('Tienda')) dd('analizar');
         else dd('analizar');
     })->name('dashboard');
