@@ -14,7 +14,6 @@
     </div> --}}
     <div class="p-2">
         <div class="max-w-full mx-auto">
-            Estoy en Dash
             {{-- <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                 @if (Auth::user()->hasRole('Operario'))
                     @livewire('stock-movimientos')
