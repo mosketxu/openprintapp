@@ -40,7 +40,7 @@
                         <table width="100%" cellspacing="0" border="1">
                             <thead>
                                 <tr>
-                                    <th width="100%">{{$campaignstore->cod}} {{$campaignstore->store}}</th>
+                                    <th width="100%"><span style="color:#FF0000; font-size:14pt">{{$campaignstore->cod}}</span> <span style="font-size:14pt"> {{$campaignstore->store}} </span></th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
