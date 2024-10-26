@@ -122,7 +122,7 @@ class   DynamicImport implements ToCollection
             $table->string('telefono')->nullable();
             $table->string('idioma')->nullable();
             for ($i = 9; $i < $maxcolumnas; $i++) {
-                $table->string('campo' . $i-8)->nullable();
+                $table->string('campo' . $i-8,10)->nullable();
             }
             $table->timestamps();
         });
