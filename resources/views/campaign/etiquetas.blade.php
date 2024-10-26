@@ -42,6 +42,9 @@
                                 <tr>
                                     <th width="100%"><span style="color:#FF0000; font-size:14pt">{{$campaignstore->cod}}</span> <span style="font-size:14pt"> {{$campaignstore->store}} </span></th>
                                 </tr>
+                                <tr>
+                                    <th width="100%"><span style="font-size:10pt">{{$campaignstore->direccion}} , {{$campaignstore->poblacion}} , {{$campaignstore->cp}}, {{$campaignstore->provincia}} </th>
+                                </tr>
                             </thead>
                             <tbody></tbody>
                             <tfoot></tfoot>
@@ -67,7 +70,8 @@
                                                     <label for="file{{ $elemento->id }}" class="">
                                                     <div class="">
                                                         @if(file_exists( 'storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento ))
-                                                        <img height="100px" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
+                                                        {{-- <img height="100px" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/> --}}
+                                                        <img style="max-width: 200px; height: auto;" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
                                                         @else
                                                         <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
                                                         @endif
