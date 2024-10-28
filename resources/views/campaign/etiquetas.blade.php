@@ -71,7 +71,11 @@
                                                     <div class="">
                                                         @if(file_exists( 'storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento ))
                                                         {{-- <img height="100px" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/> --}}
-                                                        <img style="max-width: 200px; height: auto;" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
+                                                        {{-- <img style="max-width: 200px; height: auto;" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/> --}}
+                                                        <img  src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}"
+                                                        alt={{$elemento->campaignElemento->imagenelemento}}
+                                                        title={{$elemento->campaignElemento->imagenelemento}}
+                                                        style="max-width: 200px; max-height: 200px; width: auto; height: auto; object-fit: contain;"/>
                                                         @else
                                                         <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
                                                         @endif
