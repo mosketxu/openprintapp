@@ -54,14 +54,14 @@
                         <table width="100%">
                             <thead>
                                 <tr>
-                                    <th width="33%"></th>
-                                    <th width="33%"></th>
-                                    <th width="33%"></th>
+                                    <th width="20%"></th>
+                                    <th width="20%"></th>
+                                    <th width="20%"></th>
                                     {{-- <th width="25%"></th> --}}
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($campaignstore->campaignStoreElementos->chunk(3) as $chunk)
+                                @foreach($campaignstore->campaignStoreElementos->chunk(5) as $chunk)
                                 <tr>
                                     @foreach($chunk as $elemento)
                                         <td class="celda">
@@ -75,7 +75,7 @@
                                                         <img  src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}"
                                                         alt={{$elemento->campaignElemento->imagenelemento}}
                                                         title={{$elemento->campaignElemento->imagenelemento}}
-                                                        style="max-width: 200px; max-height: 200px; width: auto; height: auto; object-fit: contain;"/>
+                                                        style="max-width: 120px; max-height: 120px; width: auto; height: auto; object-fit: contain;"/>
                                                         @else
                                                         <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
                                                         @endif
