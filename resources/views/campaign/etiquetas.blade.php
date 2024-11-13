@@ -42,6 +42,9 @@
                                 <tr>
                                     <th width="100%"><span style="color:#FF0000; font-size:14pt">{{$campaignstore->cod}}</span> <span style="font-size:14pt"> {{$campaignstore->store}} </span></th>
                                 </tr>
+                                <tr>
+                                    <th width="100%"><span style="font-size:10pt">{{$campaignstore->direccion}} , {{$campaignstore->poblacion}} , {{$campaignstore->cp}}, {{$campaignstore->provincia}} </th>
+                                </tr>
                             </thead>
                             <tbody></tbody>
                             <tfoot></tfoot>
@@ -51,14 +54,14 @@
                         <table width="100%">
                             <thead>
                                 <tr>
-                                    <th width="33%"></th>
-                                    <th width="33%"></th>
-                                    <th width="33%"></th>
+                                    <th width="20%"></th>
+                                    <th width="20%"></th>
+                                    <th width="20%"></th>
                                     {{-- <th width="25%"></th> --}}
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($campaignstore->campaignStoreElementos->chunk(3) as $chunk)
+                                @foreach($campaignstore->campaignStoreElementos->chunk(5) as $chunk)
                                 <tr>
                                     @foreach($chunk as $elemento)
                                         <td class="celda">
@@ -67,7 +70,12 @@
                                                     <label for="file{{ $elemento->id }}" class="">
                                                     <div class="">
                                                         @if(file_exists( 'storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento ))
-                                                        <img height="100px" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
+                                                        {{-- <img height="100px" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/> --}}
+                                                        {{-- <img style="max-width: 200px; height: auto;" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/> --}}
+                                                        <img  src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}"
+                                                        alt={{$elemento->campaignElemento->imagenelemento}}
+                                                        title={{$elemento->campaignElemento->imagenelemento}}
+                                                        style="max-width: 120px; max-height: 120px; width: auto; height: auto; object-fit: contain;"/>
                                                         @else
                                                         <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
                                                         @endif

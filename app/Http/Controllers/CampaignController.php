@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Campaign;
 use App\Models\CampaignStore;
+use Carbon\Carbon as CarbonCarbon;
 use Illuminate\Support\Carbon;
 
 class CampaignController extends Controller
@@ -42,7 +43,7 @@ class CampaignController extends Controller
 
     public function etiquetaspdf(Campaign $campaign){
 
-        $today=Carbon::now()->format('d/m/Y');
+        $today=CarbonCarbon::now()->format('d/m/Y');
         $campaign=$campaign->where('id',$campaign->id)->with('entidad','cabecera')->first();
         // dd($campaign);
         $etiquetas=CampaignStore::query()
