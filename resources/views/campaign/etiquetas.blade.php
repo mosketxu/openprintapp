@@ -57,14 +57,15 @@
                                     <th width="20%"></th>
                                     <th width="20%"></th>
                                     <th width="20%"></th>
-                                    {{-- <th width="25%"></th> --}}
+                                    <th width="20%"></th>
+                                    <th width="20%"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($campaignstore->campaignStoreElementos->chunk(5) as $chunk)
                                 <tr>
                                     @foreach($chunk as $elemento)
-                                        <td class="celda">
+                                        <td width="20%" class="celda">
                                             @if($campaign->cabecera->bimagenelemento==true)
                                                 <div class="">
                                                     <label for="file{{ $elemento->id }}" class="">
