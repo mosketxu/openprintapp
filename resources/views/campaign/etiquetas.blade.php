@@ -29,7 +29,7 @@
                                     Grafitex Servicios Digitales, S.A.
                                 </th>
                                 <th style="color:#ffffff;text-align:center;font-size:0.9em;"  width="25%">
-                                    F.Prevista: {{$campaign->fechainicio}} <br>
+                                    F.Prevista : {{$campaign->fechainicio}} <br>
                                     F.Tienda: {{$campaign->fechfin}}
                                     <br>
                                 </th>

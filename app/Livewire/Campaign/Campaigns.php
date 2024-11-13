@@ -26,6 +26,7 @@ class Campaigns extends Component
             ->orderBy('id','desc')
             ->get();
 
+
         $entidades=Entidad::query()
             ->when(!empty($entidad->entidad_id),function($query) use($entidad){return $query->where('id','=',$entidad->entidad_id);})
             ->whereIn('entidadtipo_id',['1','3'])

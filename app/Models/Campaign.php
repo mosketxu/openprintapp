@@ -36,8 +36,8 @@ class Campaign extends Model
 
     // public function getFini(){return $this->fechainicio->format('d/m/Y') ?? '';}
 
-    public function getFiniAttribute(){return $this->fechainicio ? Carbon::parse($this->fechinicio)->format('d-m-Y') : '';}
-    public function getFfinAttribute(){return $this->fechainicio ? Carbon::parse($this->fechifin)->format('d-m-Y') : '';}
+    public function getFiniAttribute(){return $this->fechainicio ? Carbon::parse($this->fechainicio)->format('d-m-Y') : '';}
+    public function getFfinAttribute(){return $this->fechainicio ? Carbon::parse($this->fechafin)->format('d-m-Y') : '';}
     public function getFinst1Attribute(){return $this->fechainstal1 ? Carbon::parse($this->fechainstal1)->format('d-m-Y') : '';}
     public function getFinst2Attribute(){return $this->fechainstal2 ? Carbon::parse($this->fechainstal2)->format('d-m-Y') : '';}
     public function getFinst3Attribute(){return $this->fechainstal3 ? Carbon::parse($this->fechainstal3)->format('d-m-Y') : '';}
