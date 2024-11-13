@@ -57,8 +57,8 @@ class CampaignController extends Controller
         // $pdf->setPaper('a4','landscape');
         $pdf->setPaper('a4','portrait');
 
-        // return $pdf->download('etiquetas.pdf'); //así lo descarga
-        return $pdf->stream(); // así lo muestra en pantalla
+        return $pdf->download('etiquetas.pdf'); //así lo descarga
+        // return $pdf->stream(); // así lo muestra en pantalla
     }
 
 
