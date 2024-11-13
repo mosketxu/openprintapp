@@ -56,7 +56,7 @@
             </div>
 
             @forelse ($stores as $campstoreelem)
-            <div class="w-full ml-2 text-base hover:bg-red-100 ">{{ $campstoreelem->campaignStore->store_id  }} - {{ $campstoreelem->campaignStore->store  }}
+            <div class="w-full ml-2 text-base hover:bg-red-100 ">{{ $campstoreelem->campaignStore->campaign_store_id  }} - {{ $campstoreelem->campaignStore->store  }}
                 {{-- @forelse($campstoreelem as $elemento) --}}
                 <div class="flex items-center w-full text-sm text-gray-500 border-t-0 border-y hover:bg-blue-100 hover:cursor-pointer"
                     onclick="location.href = '{{ route('campaignelemento.edit',$campstoreelem) }}'"
