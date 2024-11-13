@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Campaign;
 use App\Models\CampaignStore;
-use Carbon\Carbon as CarbonCarbon;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Carbon;
 
 class CampaignController extends Controller
@@ -43,7 +43,7 @@ class CampaignController extends Controller
 
     public function etiquetaspdf(Campaign $campaign){
 
-        $today=CarbonCarbon::now()->format('d/m/Y');
+        $today=Carbon::now()->format('d/m/Y');
         $campaign=$campaign->where('id',$campaign->id)->with('entidad','cabecera')->first();
         // dd($campaign);
         $etiquetas=CampaignStore::query()
@@ -53,12 +53,19 @@ class CampaignController extends Controller
         ->where('campaign_id',$campaign->id)
         ->get();
 
-        $pdf = \PDF::loadView('campaign.etiquetas',compact('etiquetas','campaign','today'));
-        // $pdf->setPaper('a4','landscape');
-        $pdf->setPaper('a4','portrait');
+        $path = storage_path('app/public/etiquetas.pdf'); // Cambia el nombre y la ubicación del archivo según corresponda
 
-        return $pdf->download('etiquetas.pdf'); //así lo descarga
-        // return $pdf->stream(); // así lo muestra en pantalla
+            // Eliminar el archivo anterior si existe
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+
+        $pdf = \PDF::loadView('campaign.etiquetas',compact('etiquetas','campaign','today'));
+                $pdf->setPaper('a4','portrait');
+                // return $pdf->stream(); // así lo muestra en pantalla
+                return $pdf->stream('etiquetas_' . time() . '.pdf');
+                // return $pdf->download('etiquetas.pdf'); //así lo descarga
+
     }
 
 
