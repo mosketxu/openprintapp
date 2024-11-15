@@ -65,8 +65,14 @@
                                 @foreach($campaignstore->campaignStoreElementos->chunk(5) as $chunk)
                                 <tr>
                                     @foreach($chunk as $elemento)
-                                        <td width="20%" class="celda">
-                                            {{-- <td style="width: 20%; max-width: 20%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"> --}}
+                                        {{-- <td width="20%" class="celda"> --}}
+                                            <td style="
+                                                width: 20%; max-width: 20%; word-wrap: break-word; word-break: break-word;
+                                                font-family: DejaVu Sans, Arial, Helvetica Neue, Helvetica, sans-serif;
+                                                border: rgb(0, 0, 0) 1px solid;
+                                                text-align: center;
+                                                font-size: 12px;
+                                                ">
                                             @if($campaign->cabecera->bimagenelemento==true)
                                                 <div class="">
                                                     <label for="file{{ $elemento->id }}" class="">
