@@ -109,7 +109,7 @@
                             </label>
                         @else
                             <label for="file{{ $campstoreelem->campaignElemento->id }}" >
-                                <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$campstoreelem->campaignElemento->imagenelemento}} title={{$campstoreelem->campaignElemento->imagenelemento}}
+                                <img src="{{asset('storage/galeria/pordefecto.png')}}" alt={{$campstoreelem->campaignElemento->imagenelemento}} title={{$campstoreelem->campaignElemento->imagenelemento}}
                                 class="h-10 mx-auto"/>
                             </label>
                         @endif

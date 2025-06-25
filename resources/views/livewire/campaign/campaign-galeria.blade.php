@@ -10,7 +10,7 @@
     </label>
     @else
     <label for="file{{ $campelemento->id }}" class="cursor-pointer">
-        <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$campelemento->imagenelemento}} title={{$campelemento->imagenelemento}}
+        <img src="{{asset('storage/galeria/pordefecto.png')}}" alt={{$campelemento->imagenelemento}} title={{$campelemento->imagenelemento}}
         class="{{ $altura }} mx-auto"/>
     </label>
     @endif

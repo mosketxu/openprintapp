@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('elementificador')->nullable()->index();
             $table->bigInteger('producto_id')->nullable();
             $table->double('preciocoste_ud', 15, 2)->default(0.00);
-            $table->string('imagenelemento')->default('pordefecto.jpg');
+            $table->string('imagenelemento')->default('pordefecto.png');
             $table->timestamps();
         });
     }

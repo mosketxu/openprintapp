@@ -116,7 +116,7 @@
                     </label>
                     @else
                     <label class="cursor-pointer">
-                        <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$elemento->imagenelemento}} title={{$elemento->imagenelemento}}
+                        <img src="{{asset('storage/galeria/pordefecto.png')}}" alt={{$elemento->imagenelemento}} title={{$elemento->imagenelemento}}
                         class="h-10 mx-auto"/>
                     </label>
                     @endif

@@ -85,7 +85,7 @@
                                                         title={{$elemento->campaignElemento->imagenelemento}}
                                                         style="max-width: 120px; max-height: 120px; width: auto; height: auto; object-fit: contain;"/>
                                                         @else
-                                                        <img src="{{asset('storage/galeria/pordefecto.jpg')}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
+                                                        <img src="{{asset('storage/galeria/pordefecto.png')}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/>
                                                         @endif
                                                     </div>
                                                     </label>
