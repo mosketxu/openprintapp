@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>GrafitexUtil</title>
+        <title>OpenprintApp</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -42,11 +42,11 @@
 
             <div class="max-w-6xl ">
                 <div class="flex justify-center">
-                    <img src="{{ asset('img/grafitexLogo.png') }}" alt="" class="w-auto h-16 text-gray-700 sm:h-20">
+                    <img src="{{ asset('img/logo.png') }}" alt="" class="w-auto h-16 text-gray-700 sm:h-20">
                 </div>
 
                 <div class="">
-                    <h1>Bienvenido a Grafitex</h1>
+                    <h1>Bienvenido a Openprint</h1>
                     <h2>Utilidades</h2>
                 </div>
 

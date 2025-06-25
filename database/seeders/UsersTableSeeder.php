@@ -19,21 +19,21 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete();
 
         User::create(['name' => 'Administrador','email' => 'admin@admin.com','password' => bcrypt('12345678'),
-        ])->assignRole('admin');
+        ])->assignRole('Admin');
 
-        User::create(['name' => 'mosketxu','email' => 'mosketxu@gmail.com','password' => bcrypt('12345678'),
-        ])->assignRole('admin');
+        User::create(['name' => 'AlexArregui','email' => 'alex.arregui@sumaempresa.com','password' => bcrypt('12345678'),
+        ])->assignRole('Admin');
 
-        User::create(['name' => 'grafitex', 'email' => 'grafitex@grafitex.com','password'=>bcrypt('12345678'),
-        ])->assignRole('grafitex');
+        User::create(['name' => 'Gestion', 'email' => 'gestion@openprint.com','password'=>bcrypt('12345678'),
+        ])->assignRole('Gestion');
 
-        User::create(['name' => 'cliente','email' => 'cliente@cliente.com','password' => bcrypt('12345678'),
-        ])->assignRole('cliente');
+        User::create(['name' => 'Cliente','email' => 'cliente@cliente.com','password' => bcrypt('12345678'),
+        ])->assignRole('Cliente');
 
         User::create(['name' => 'montador','email' => 'montador@montador.com','password' => bcrypt('12345678'),
-        ])->assignRole('montador');
+        ])->assignRole('Montador');
 
         User::create(['name' => 'tienda','email' => 'tienda@tienda.com','password' => bcrypt('12345678'),
-        ])->assignRole('tienda');
+        ])->assignRole('Tienda');
     }
 }

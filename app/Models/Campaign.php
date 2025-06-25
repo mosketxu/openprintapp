@@ -11,7 +11,7 @@ class Campaign extends Model
     use HasFactory;
     protected $fillable=['entidad_id','name','fechainicio','fechafin','estado','estadoproceso','numcolumnas','filacod','fichero','fechafichero','fechainstal1','fechainstal2','fechainstal3','montaje1','montaje2','montaje3'];
 
-    public function entidad(){return $this->belongsTo(Entidad::class,'entidad_id','id')->withDefault(['entidad'=>'Grafitex']);}
+    public function entidad(){return $this->belongsTo(Entidad::class,'entidad_id','id')->withDefault(['entidad'=>'Openprint']);}
     public function campaignStores(){return $this->hasMany(CampaignStore::class);}
     public function campaignElementos(){return $this->hasMany(CampaignElemento::class);}
     public function campaignStoreElementos(){return $this->hasMany(CampaignStoreElemento::class);}
