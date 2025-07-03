@@ -71,6 +71,35 @@ class CampaignController extends Controller
 
     }
 
+        public function etiquetashtml(Campaign $campaign){
+
+        $today=Carbon::now()->format('d/m/Y');
+        $campaign=$campaign->where('id',$campaign->id)->with('entidad','cabecera')->first();
+        // dd($campaign);
+        $etiquetas=CampaignStore::query()
+        ->where('campaign_id',$campaign->id)
+        ->whereHas('campaignStoreElementos')
+        ->with('campaignStoreElementos')
+        ->where('campaign_id',$campaign->id)
+        ->get();
+
+        $path = storage_path('app/public/etiquetas.pdf'); // Cambia el nombre y la ubicación del archivo según corresponda
+
+            // Eliminar el archivo anterior si existe
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+
+            // Mostrar la vista directamente para depurar
+        return view('campaign.etiquetas', compact('etiquetas', 'campaign', 'today'));
+
+        // $pdf = \PDF::loadView('campaign.etiquetas',compact('etiquetas','campaign','today'));
+        //         $pdf->setPaper('a4','portrait');
+        //         // return $pdf->stream(); // así lo muestra en pantalla
+        //         return $pdf->stream('etiquetas_' . time() . '.pdf');
+        //         // return $pdf->download('etiquetas.pdf'); //así lo descarga
+
+    }
 
     public function cabecera(Campaign $campaign){
         return view('campaign.cabecera',compact('campaign'));
