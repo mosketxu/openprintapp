@@ -80,14 +80,19 @@
                                                     <div class="">
                                                         @if(file_exists( 'storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento ))
                                                         {{-- <img height="100px" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/> --}}
-                                                        {{-- <img style="max-width: 200px; height: auto;" src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/> --}}
-                                                        <img  src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}"
+                                                        <img src="{{public_path('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}"
+                                                            style="max-width: 120px; max-height: 120px; width: auto; height: auto; object-fit: contain;"
+                                                            alt={{$elemento->campaignElemento->imagenelemento}}
+                                                            title={{$elemento->campaignElemento->imagenelemento}}/>
+
+                                                        {{-- <img  src="{{asset('storage/galeria/'.$campaign->id.'/thumbnails/thumb-'.$elemento->campaignElemento->imagenelemento.'?'.time())}}"
                                                         alt={{$elemento->campaignElemento->imagenelemento}}
                                                         title={{$elemento->campaignElemento->imagenelemento}}
-                                                        style="max-width: 120px; max-height: 120px; width: auto; height: auto; object-fit: contain;"/>
+                                                        style="max-width: 120px; max-height: 120px; width: auto; height: auto; object-fit: contain;"/> --}}
+
                                                         @else
-                                                        {{-- <img src="{{asset('storage/galeria/pordefecto.png')}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/> --}}
-                                                        <img src="{{public_path('storage/galeria/pordefecto.png')}}" width="50px">
+                                                            {{-- <img src="{{asset('storage/galeria/pordefecto.png')}}" alt={{$elemento->campaignElemento->imagenelemento}} title={{$elemento->campaignElemento->imagenelemento}}/> --}}
+                                                            <img src="{{public_path('storage/galeria/pordefecto.png')}}" width="50px">
                                                         @endif
                                                     </div>
                                                     </label>
