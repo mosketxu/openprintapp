@@ -61,7 +61,7 @@ class CampaignController extends Controller
         }
 
             // Mostrar la vista directamente para depurar
-        return view('campaign.etiquetas', compact('etiquetas', 'campaign', 'today'));
+        // return view('campaign.etiquetas', compact('etiquetas', 'campaign', 'today'));
 
         $pdf = \PDF::loadView('campaign.etiquetas',compact('etiquetas','campaign','today'));
                 $pdf->setPaper('a4','portrait');
