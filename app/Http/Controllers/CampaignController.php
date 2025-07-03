@@ -60,6 +60,9 @@ class CampaignController extends Controller
             File::delete($path);
         }
 
+            // Mostrar la vista directamente para depurar
+        return view('campaign.etiquetas', compact('etiquetas', 'campaign', 'today'));
+
         $pdf = \PDF::loadView('campaign.etiquetas',compact('etiquetas','campaign','today'));
                 $pdf->setPaper('a4','portrait');
                 // return $pdf->stream(); // así lo muestra en pantalla
