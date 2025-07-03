@@ -22,7 +22,8 @@
                         <thead>
                             <tr style="background-color: #139cdc;">
                                 <th style="text-align: right;" width="25%">
-                                    <img src="{{asset('img/logo.png')}}" width="50px"></th>
+                                    {{-- <img src="{{asset('img/logo.png')}}" width="50px"></th> --}}
+                                    <img src="{{public_path('storage/img/logo.png')}}" width="50px">
                                 <th style="color:#ffffff;text-align:center;"  width="50%">
                                     Cliente: {{$campaign->entidad->entidad}} <br>
                                     Campaña: {{$campaign->name}}<br>

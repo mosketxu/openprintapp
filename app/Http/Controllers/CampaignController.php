@@ -71,7 +71,7 @@ class CampaignController extends Controller
 
     }
 
-        public function etiquetashtml(Campaign $campaign){
+    public function etiquetashtml(Campaign $campaign){
 
         $today=Carbon::now()->format('d/m/Y');
         $campaign=$campaign->where('id',$campaign->id)->with('entidad','cabecera')->first();
