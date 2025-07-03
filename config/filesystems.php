@@ -47,10 +47,17 @@ return [
         'galeria' => [
             'driver' => 'local',
             'root' => storage_path('app/public/galeria'),
-            'url' => env('APP_URL').'/galeria',
+            'url' => env('APP_URL') . '/storage/galeria',
             'visibility' => 'public',
             'throw' => false,
         ],
+        // 'galeria' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app/public/galeria'),
+        //     'url' => env('APP_URL').'/galeria',
+        //     'visibility' => 'public',
+        //     'throw' => false,
+        // ],
 
 
         // 's3' => [
