@@ -90,8 +90,8 @@ class CampaignController extends Controller
             File::delete($path);
         }
 
-            // Mostrar la vista directamente para depurar
-        return view('campaign.etiquetas', compact('etiquetas', 'campaign', 'today'));
+            // Mostrar la vista directamente en html
+        return view('campaign.etiquetashtml', compact('etiquetas', 'campaign', 'today'));
 
         // $pdf = \PDF::loadView('campaign.etiquetas',compact('etiquetas','campaign','today'));
         //         $pdf->setPaper('a4','portrait');
